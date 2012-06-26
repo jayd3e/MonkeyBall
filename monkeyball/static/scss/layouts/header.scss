@@ -16,7 +16,7 @@
             margin: 5px 5px 0px 5px;
 
             a {
-                @include gradient(#E3535D, #D63E40);
+                @include gradient(#8A241B, #70231C);
                 display: inline-block;
                 padding: 5px;
                 border-radius: 3px;
@@ -37,6 +37,7 @@
 
             a {
                 color: #FFF;
+                vertical-align: text-bottom;
             }
         }
     }

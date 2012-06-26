@@ -48,26 +48,41 @@ table {
 tt, code, kbd, samp {
   font-family: monospace; }
 
-.horiz-list {
-  overflow: auto; }
-  .horiz-list li {
-    float: left; }
-
-a, h2 {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
-
-h2 {
-  font-size: 15px; }
-
-a {
-  font-size: 12px;
-  text-decoration: none; }
-
 /*
 *
 * Gradient
 *
 */
+/*
+*
+* Base Type
+*
+*/
+/*
+*
+* Base Mixins
+*
+*/
+.horiz-list {
+  overflow: auto; }
+  .horiz-list li {
+    float: left; }
+
+a, h2, th, td {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: #999; }
+
+h1, h2, h3, h4, h5, h6 {
+  padding-bottom: 5px; }
+
+h2 {
+  font-size: 19px;
+  color: #4F87C8; }
+
+a {
+  text-decoration: none; }
+
 body {
   background-image: url("../img/classy_fabric.png"); }
 
@@ -76,7 +91,8 @@ body {
   background-color: #1A1A1A; }
 
 .main {
-  width: 100%; }
+  width: 100%;
+  padding-top: 10px; }
 
 .container {
   margin: 0 auto;
@@ -96,13 +112,13 @@ body {
     .header .main_nav li {
       margin: 5px 5px 0px 5px; }
       .header .main_nav li a {
-        background-color: #d63e40;
+        background-color: #70231c;
         background-image: url("None");
-        background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#e3535d), to(#d63e40));
-        background-image: -webkit-linear-gradient(top, #e3535d, #d63e40);
-        background-image: -moz-linear-gradient(top, #e3535d, #d63e40);
-        background-image: -ms-linear-gradient(top, #e3535d, #d63e40);
-        background-image: -o-linear-gradient(top, #e3535d, #d63e40);
+        background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#8a241b), to(#70231c));
+        background-image: -webkit-linear-gradient(top, #8a241b, #70231c);
+        background-image: -moz-linear-gradient(top, #8a241b, #70231c);
+        background-image: -ms-linear-gradient(top, #8a241b, #70231c);
+        background-image: -o-linear-gradient(top, #8a241b, #70231c);
         display: inline-block;
         padding: 5px;
         border-radius: 3px;
@@ -116,14 +132,86 @@ body {
     .header .account li {
       margin-left: 10px; }
       .header .account li a {
-        color: #FFF; }
+        color: #FFF;
+        vertical-align: text-bottom; }
 
 .dashboard {
   position: relative; }
   .dashboard .left {
-    padding: 5px 450px 5px 5px; }
+    padding: 5px 475px 5px 5px; }
+    .dashboard .left .leaderboard {
+      background-color: #222;
+      border-radius: 3px;
+      padding: 10px; }
+      .dashboard .left .leaderboard .leaders {
+        width: 100%; }
+        .dashboard .left .leaderboard .leaders thead {
+          background-color: #1A1A1A; }
+          .dashboard .left .leaderboard .leaders thead th.num {
+            width: 10px; }
+          .dashboard .left .leaderboard .leaders thead th {
+            padding: 5px;
+            text-align: left;
+            color: #FFF; }
+        .dashboard .left .leaderboard .leaders tbody td {
+          padding: 5px; }
   .dashboard .right {
     position: absolute;
     width: 450px;
+    padding: 5px;
     right: 0px;
     top: 0px; }
+    .dashboard .right .upcoming_games {
+      background-color: #222;
+      border-radius: 3px;
+      padding: 10px;
+      margin-bottom: 15px; }
+    .dashboard .right .previous_games {
+      background-color: #222;
+      border-radius: 3px;
+      padding: 10px; }
+
+.game {
+  overflow: auto;
+  padding: 15px 0px;
+  margin: 10px 0px;
+  text-align: center;
+  border-radius: 3px;
+  background-color: #333; }
+  .game img {
+    vertical-align: text-bottom; }
+  .game .divider {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color: #999;
+    padding: 5px 0px;
+    color: #FFF; }
+  .game .left_players {
+    float: left;
+    width: 160px; }
+  .game .middle {
+    float: left; }
+    .game .middle .time {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      color: #999;
+      color: #A9BD38; }
+    .game .middle .versus {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      color: #999;
+      width: 75px;
+      font-size: 23px;
+      padding: 7px 0px;
+      color: #8A241B; }
+  .game .right_players {
+    float: left;
+    width: 160px; }
+
+.game.singles .player {
+  margin-top: 8px; }
+.game.singles .versus {
+  padding: 0px; }
+
+.player a {
+  color: #4F87C8; }

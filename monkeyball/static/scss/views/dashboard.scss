@@ -2,13 +2,116 @@
     position: relative;
 
     .left {
-        padding: 5px 450px 5px 5px;
+        padding: 5px 475px 5px 5px;
+
+        .leaderboard {
+            @include panel();
+
+            .leaders {
+                width: 100%;
+
+                thead {
+                    background-color: #1A1A1A;
+
+                    th.num {
+                        width: 10px;
+                    }
+
+                    th {
+                        padding: 5px;
+                        text-align: left;
+                        color: #FFF;
+                    }
+                }
+
+                tbody {
+                    td {
+                        padding: 5px;
+                    }
+                }
+            }
+        }
     }
 
     .right {
         position: absolute;
         width: 450px;
+        padding: 5px;
         right: 0px;
         top: 0px;
+
+        .upcoming_games {
+            @include panel();
+            margin-bottom: 15px;
+        }
+
+        .previous_games {
+            @include panel();
+        }
+    }
+}
+
+
+.game {
+    overflow: auto;
+    padding: 15px 0px;
+    margin: 10px 0px;
+    text-align: center;
+    border-radius: 3px;
+    background-color: #333;
+
+    img {
+        vertical-align: text-bottom;
+    }
+
+    .divider {
+        @include base();
+
+        padding: 5px 0px;
+        color: #FFF;
+    }
+
+    .left_players {
+        float: left;
+        width: 160px;
+    }
+
+    .middle {
+        float: left;
+
+        .time {
+            @include base();
+            color: #A9BD38;
+        }
+
+        .versus {
+            @include base();
+            width: 75px;
+            font-size: 23px;
+            padding: 7px 0px;
+            color: #8A241B;
+        }
+    }
+
+    .right_players {
+        float: left;
+        width: 160px;
+    }
+}
+
+.game.singles {
+
+    .player {
+        margin-top: 8px;
+    }
+
+    .versus {
+        padding: 0px;
+    }
+}
+
+.player {
+    a {
+        color: #4F87C8;
     }
 }
