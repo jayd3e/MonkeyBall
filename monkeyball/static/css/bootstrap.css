@@ -48,6 +48,26 @@ table {
 tt, code, kbd, samp {
   font-family: monospace; }
 
+.horiz-list {
+  overflow: auto; }
+  .horiz-list li {
+    float: left; }
+
+a, h2 {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
+
+h2 {
+  font-size: 15px; }
+
+a {
+  font-size: 12px;
+  text-decoration: none; }
+
+/*
+*
+* Gradient
+*
+*/
 body {
   background-image: url("../img/classy_fabric.png"); }
 
@@ -65,6 +85,38 @@ body {
 
 .header {
   height: 35px; }
+  .header .logo {
+    float: left;
+    padding: 5px;
+    font-size: 20px;
+    color: #a9bd38;
+    text-shadow: 1px 1px black; }
+  .header .main_nav {
+    float: left; }
+    .header .main_nav li {
+      margin: 5px 5px 0px 5px; }
+      .header .main_nav li a {
+        background-color: #d63e40;
+        background-image: url("None");
+        background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#e3535d), to(#d63e40));
+        background-image: -webkit-linear-gradient(top, #e3535d, #d63e40);
+        background-image: -moz-linear-gradient(top, #e3535d, #d63e40);
+        background-image: -ms-linear-gradient(top, #e3535d, #d63e40);
+        background-image: -o-linear-gradient(top, #e3535d, #d63e40);
+        display: inline-block;
+        padding: 5px;
+        border-radius: 3px;
+        color: #FFF;
+        text-shadow: 0 -1px rgba(34, 25, 25, 0.3);
+        font-weight: 600; }
+  .header .account {
+    float: right;
+    padding-top: 6px;
+    height: 35px; }
+    .header .account li {
+      margin-left: 10px; }
+      .header .account li a {
+        color: #FFF; }
 
 .dashboard {
   position: relative; }

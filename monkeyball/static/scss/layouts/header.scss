@@ -1,3 +1,43 @@
 .header {
     height: 35px;
+
+    .logo {
+        float: left;
+        padding: 5px;
+        font-size: 20px;
+        color: #a9bd38;
+        text-shadow: 1px 1px black;
+    }
+
+    .main_nav {
+        float: left;
+
+        li {
+            margin: 5px 5px 0px 5px;
+
+            a {
+                @include gradient(#E3535D, #D63E40);
+                display: inline-block;
+                padding: 5px;
+                border-radius: 3px;
+                color: #FFF;
+                text-shadow: 0 -1px rgba(34, 25, 25, 0.3);
+                font-weight: 600;
+            }
+        }
+    }
+
+    .account {
+        float: right;
+        padding-top: 6px;
+        height: 35px;
+
+        li {
+            margin-left: 10px;
+
+            a {
+                color: #FFF;
+            }
+        }
+    }
 }

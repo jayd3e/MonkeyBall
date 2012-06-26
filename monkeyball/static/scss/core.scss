@@ -1,0 +1,36 @@
+.horiz-list {
+    overflow: auto;
+
+    li {
+        float: left;
+    }
+}
+
+a, h2 {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+h2 {
+    font-size: 15px;
+}
+
+a {
+    font-size: 12px;
+    text-decoration: none;
+}
+
+/*
+*
+* Gradient
+*
+*/
+
+@mixin gradient($top, $bot, $image:"None") {
+    background-color: $bot;
+    background-image: url($image);
+    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from($top), to($bot));
+    background-image: -webkit-linear-gradient(top, $top, $bot);
+    background-image: -moz-linear-gradient(top, $top, $bot);
+    background-image: -ms-linear-gradient(top, $top, $bot);
+    background-image: -o-linear-gradient(top, $top, $bot);
+}
