@@ -11,9 +11,8 @@ def main(global_config, **settings):
 
     #Routes
     config.add_route('index', '/')
-    config.add_route('game', '/game/{id}')
     config.add_route('game_create', '/game/create')
-    config.add_route('queueing', '/queueing')
+    config.add_route('game', '/game/{id}')
 
     config.scan('monkeyball')
     return config.make_wsgi_app()

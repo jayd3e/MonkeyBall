@@ -53,7 +53,7 @@
         <aside class="right">
             <div class="upcoming_games">
             <h2>Upcoming Games</h2>
-            % for i in range(4):
+            % for i in range(2):
                 <div class="game doubles">
                     <div class="left_players">
                         <div class="player">
@@ -83,7 +83,7 @@
                     </div>
                 </div>
             % endfor
-            % for i in range(4):
+            % for i in range(1):
                 <div class="game singles">
                     <div class="left_players">
                         <div class="player">
@@ -106,7 +106,7 @@
             </div>
             <div class="previous_games">
             <h2>Previous Games</h2>
-            % for i in range(4):
+            % for i in range(2):
                 <div class="game doubles">
                     <div class="left_players">
                         <div class="player">
@@ -136,7 +136,7 @@
                     </div>
                 </div>
             % endfor
-            % for i in range(4):
+            % for i in range(1):
                 <div class="game singles">
                     <div class="left_players">
                         <div class="player">

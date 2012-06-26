@@ -2,10 +2,10 @@
     <a class="logo" href="/">MonkeyBall</a>
     <ul class="main_nav horiz-list">
         <li>
-            <a href="#">Start</a>
+            <a class="primary" href="/game/create">Start</a>
         </li>
         <li>
-            <a href="#">Queue</a>
+            <a class="primary" href="#">Queue</a>
         </li>
     </ul>
     <ul class="account horiz-list">

@@ -63,6 +63,23 @@ tt, code, kbd, samp {
 * Base Mixins
 *
 */
+.primary {
+  background-color: #70231c;
+  background-image: url("None");
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#8a241b), to(#70231c));
+  background-image: -webkit-linear-gradient(top, #8a241b, #70231c);
+  background-image: -moz-linear-gradient(top, #8a241b, #70231c);
+  background-image: -ms-linear-gradient(top, #8a241b, #70231c);
+  background-image: -o-linear-gradient(top, #8a241b, #70231c);
+  display: inline-block;
+  padding: 5px;
+  border-radius: 3px;
+  color: #FFF;
+  text-shadow: 0 -1px rgba(34, 25, 25, 0.3);
+  font-weight: 600; }
+  .primary.big {
+    font-size: 25px; }
+
 .horiz-list {
   overflow: auto; }
   .horiz-list li {
@@ -97,7 +114,8 @@ body {
 .container {
   margin: 0 auto;
   min-width: 960px;
-  max-width: 1280px; }
+  max-width: 1280px;
+  padding: 0px 10px; }
 
 .header {
   height: 35px; }
@@ -111,20 +129,6 @@ body {
     float: left; }
     .header .main_nav li {
       margin: 5px 5px 0px 5px; }
-      .header .main_nav li a {
-        background-color: #70231c;
-        background-image: url("None");
-        background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#8a241b), to(#70231c));
-        background-image: -webkit-linear-gradient(top, #8a241b, #70231c);
-        background-image: -moz-linear-gradient(top, #8a241b, #70231c);
-        background-image: -ms-linear-gradient(top, #8a241b, #70231c);
-        background-image: -o-linear-gradient(top, #8a241b, #70231c);
-        display: inline-block;
-        padding: 5px;
-        border-radius: 3px;
-        color: #FFF;
-        text-shadow: 0 -1px rgba(34, 25, 25, 0.3);
-        font-weight: 600; }
   .header .account {
     float: right;
     padding-top: 6px;
@@ -142,7 +146,7 @@ body {
     .dashboard .left .leaderboard {
       background-color: #222;
       border-radius: 3px;
-      padding: 10px; }
+      padding: 10px 10px 20px 10px; }
       .dashboard .left .leaderboard .leaders {
         width: 100%; }
         .dashboard .left .leaderboard .leaders thead {
@@ -164,12 +168,12 @@ body {
     .dashboard .right .upcoming_games {
       background-color: #222;
       border-radius: 3px;
-      padding: 10px;
+      padding: 10px 10px 20px 10px;
       margin-bottom: 15px; }
     .dashboard .right .previous_games {
       background-color: #222;
       border-radius: 3px;
-      padding: 10px; }
+      padding: 10px 10px 20px 10px; }
 
 .game {
   overflow: auto;
@@ -203,7 +207,8 @@ body {
       width: 75px;
       font-size: 23px;
       padding: 7px 0px;
-      color: #8A241B; }
+      color: #8A241B;
+      text-shadow: 0 1px rgba(34, 25, 25, 0.8); }
   .game .right_players {
     float: left;
     width: 160px; }
@@ -213,5 +218,130 @@ body {
 .game.singles .versus {
   padding: 0px; }
 
+.create_game {
+  background-color: #222;
+  border-radius: 3px;
+  padding: 10px 10px 20px 10px; }
+  .create_game .inner {
+    display: inline-block;
+    margin: 0 auto; }
+  .create_game .options {
+    margin-bottom: 20px; }
+    .create_game .options li {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      color: #999;
+      padding: 3px 6px;
+      border-radius: 3px;
+      background-color: #A9BD38;
+      margin-right: 5px;
+      color: #FFF;
+      text-shadow: 0 -1px rgba(34, 25, 25, 0.3);
+      font-weight: 600; }
+      .create_game .options li:hover {
+        cursor: pointer; }
+  .create_game .creator {
+    overflow: auto; }
+    .create_game .creator .divider {
+      padding: 15px 0px; }
+    .create_game .creator .left_players {
+      width: auto; }
+    .create_game .creator .middle {
+      padding-top: 35px;
+      margin: 0px 25px; }
+      .create_game .creator .middle .versus {
+        width: auto;
+        font-size: 45px; }
+    .create_game .creator .right_players {
+      width: auto; }
+  .create_game .actions {
+    text-align: left;
+    padding: 15px 0px 0px 0px; }
+
+.game_lobby {
+  background-color: #222;
+  border-radius: 3px;
+  padding: 10px 10px 20px 10px; }
+  .game_lobby .lobby {
+    display: inline-block;
+    margin: 0 auto;
+    overflow: auto;
+    margin-bottom: 15px; }
+    .game_lobby .lobby .divider {
+      padding: 15px 0px; }
+    .game_lobby .lobby .left_score, .game_lobby .lobby .right_score {
+      float: left;
+      font-size: 50px;
+      margin-top: 35px; }
+      .game_lobby .lobby .left_score input, .game_lobby .lobby .right_score input {
+        font-size: 45px;
+        width: 60px; }
+    .game_lobby .lobby .left_score {
+      margin-right: 30px; }
+    .game_lobby .lobby .left_players {
+      width: auto; }
+    .game_lobby .lobby .middle {
+      padding-top: 35px;
+      margin: 0px 25px; }
+      .game_lobby .lobby .middle .versus {
+        width: auto;
+        font-size: 45px; }
+    .game_lobby .lobby .right_players {
+      width: auto; }
+    .game_lobby .lobby .right_score {
+      margin-left: 30px; }
+  .game_lobby .finalize {
+    margin-bottom: 15px; }
+  .game_lobby .chat {
+    background-color: #111;
+    border-radius: 3px; }
+    .game_lobby .chat .messages {
+      overflow: auto;
+      padding: 10px;
+      height: 350px;
+      text-align: left;
+      border-radius: 3px; }
+    .game_lobby .chat .message_input {
+      border-top: 1px solid #EEE; }
+      .game_lobby .chat .message_input input {
+        display: block;
+        background-color: #111;
+        border: none;
+        margin: 0px;
+        padding: 10px 10px;
+        color: #FFF;
+        font-size: 20px;
+        width: 600px; }
+        .game_lobby .chat .message_input input:focus {
+          outline: none; }
+
+.message {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: #999;
+  padding: 5px 0px;
+  color: #EEE; }
+  .message .username {
+    color: #4F87C8;
+    padding-right: 10px; }
+    .message .username:after {
+      content: ":"; }
+
 .player a {
+  color: #4F87C8; }
+
+.player_input {
+  text-align: left; }
+  .player_input input {
+    font-size: 35px;
+    width: 320px;
+    color: #2e2e2e;
+    vertical-align: text-bottom;
+    height: 43px; }
+
+.player_large {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: #999;
+  font-size: 40px;
   color: #4F87C8; }
