@@ -1,1 +1,8 @@
 @import "vars";
+
+@import "libs/reset";
+
+@import "layouts/base";
+@import "layouts/header";
+
+@import "views/dashboard"

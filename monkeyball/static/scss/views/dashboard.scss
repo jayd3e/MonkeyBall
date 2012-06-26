@@ -1,0 +1,14 @@
+.dashboard {
+    position: relative;
+
+    .left {
+        padding: 5px 450px 5px 5px;
+    }
+
+    .right {
+        position: absolute;
+        width: 450px;
+        right: 0px;
+        top: 0px;
+    }
+}

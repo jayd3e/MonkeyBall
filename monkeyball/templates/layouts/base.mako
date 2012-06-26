@@ -8,14 +8,14 @@
         <link rel="stylesheet" type="text/css" href="${request.static_url('monkeyball:static/css/bootstrap.css')}" />
     </head>
     <body>
-        <div id="top">
+        <div class="top">
             <div class="container">
-                <header id="header">
+                <header class="header">
                     ${ header.header(here) }
                 </header>
             </div>
         </div>
-        <div id="main">
+        <div class="main">
             <div class="container">
                 ${ self.body() }
             </div>
