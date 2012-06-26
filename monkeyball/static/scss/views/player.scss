@@ -1,0 +1,24 @@
+.player {
+    a {
+        color: #4F87C8;
+    }
+}
+
+.player_input {
+    text-align: left;
+
+    input {
+        font-size: 35px;
+        width: 320px;
+        color: #2e2e2e;
+        vertical-align: text-bottom;
+        height: 43px;
+    }
+}
+
+.player_large {
+    @include base();
+
+    font-size: 40px;
+    color: #4F87C8;
+}
