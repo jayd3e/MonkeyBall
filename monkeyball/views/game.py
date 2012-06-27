@@ -16,40 +16,18 @@ def lobby(request):
         game.completed = True
         game.left_score = request.POST.get('left_score')
         game.right_score = request.POST.get('right_score')
+        game.time = datetime.now()
 
-    lefts = []
-    rights = []
-    for join in game.joins:
-        if join.side == 0:
-            lefts.append({
-                'id': join.player.id,
-                'name': join.player.name
-            })
-        else:
-            rights.append({
-                'id': join.player.id,
-                'name': join.player.name
-            })
+    lefts, rights = game.separate_players()
 
     # Times
-    m = "AM"
-    hour = game.time.hour
-    if hour > 12:
-        hour = hour % 12
-        m = "PM"
-
-    # Figure out game type to change lobby style
-    if game.game_type == 0:
-        game_type = " singles"
-    else:
-        game_type = " doubles"
+    hour, min, m = game.get_printed_time()
 
     db.flush()
     return {
         "game": game,
         "hour": hour,
         "m": m,
-        "game_type": game_type,
         "lefts": lefts,
         "rights": rights
     }
@@ -66,11 +44,12 @@ def create(request):
 
         time = datetime.today()
 
+        minute = int(request.POST.get('min'))
         hour = int(request.POST.get('hour'))
         if request.POST.get('m') == "PM":
             hour += 12
 
-        time = time.replace(hour=hour)
+        time = time.replace(hour=hour, minute=minute)
         game = Game(completed=False,
                     left_score=0,
                     right_score=0,
@@ -96,12 +75,13 @@ def create(request):
     elif request.POST.get('cancel'):
         return HTTPFound('/')
 
-    m = 0
+    # Current time
+    m = "AM"
     hour = datetime.now().hour
     min = datetime.now().minute
     if hour > 12:
         hour = hour % 12
-        m = 1
+        m = "PM"
 
     return {
         'hour': hour,

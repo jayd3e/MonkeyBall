@@ -26,5 +26,30 @@ class Game(Base):
             if join.player.id is player_id:
                 return join.side
 
+    def get_printed_time(self):
+        m = "AM"
+        hour = self.time.hour
+        if hour > 12:
+            hour = hour % 12
+            m = "PM"
+
+        return hour, self.time.minute, m
+
+    def separate_players(self):
+        lefts = []
+        rights = []
+        for join in self.joins:
+            if join.side == 0:
+                lefts.append({
+                    'id': join.player.id,
+                    'name': join.player.name
+                })
+            else:
+                rights.append({
+                    'id': join.player.id,
+                    'name': join.player.name
+                })
+        return lefts, rights
+
     def __repr__(self):
         return "<Game('%s')>" % (self.id)

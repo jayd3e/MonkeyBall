@@ -392,6 +392,10 @@ body {
     .message .username:after {
       content: ":"; }
 
+.player_input img, .player_large img {
+  width: 50px;
+  height: 50px; }
+
 .player a {
   color: #4F87C8; }
 .player img {
@@ -431,7 +435,8 @@ body {
   font-size: 14px;
   color: #999;
   font-size: 40px;
-  color: #4F87C8; }
+  color: #4F87C8;
+  text-align: left; }
 
 .ui-autocomplete {
   background-color: #FFF;

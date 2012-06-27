@@ -10,7 +10,7 @@
 <%def name="body()">
     <form action="/game/${ game.id }" method="POST">
         <div class="game game_lobby">
-            <div class="lobby${ game_type }">
+            <div class="lobby${ ' singles' if game.game_type == 0 else ' doubles'}">
                 % if game.completed != True:
                     <div class="left_score">
                         <input maxlength="2" min="1" max="10" type="text" name="left_score" value="0" />
@@ -29,7 +29,7 @@
                 </div>
                 <div class="middle">
                     <div class="time">
-                        @${ hour }:${ game.time.minute }${ m }
+                        @${ hour }:${ "%02d" % game.time.minute }${ m }
                     </div>
                     <div class="versus">vs</div>
                 </div>

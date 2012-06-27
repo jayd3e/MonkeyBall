@@ -1,4 +1,11 @@
+from datetime import datetime
 from pyramid.view import view_config
+from monkeyball.models.game import Game
+from sqlalchemy.sql.expression import desc
+
+
+def get_leaderboard():
+    pass
 
 
 @view_config(route_name='index',
@@ -29,14 +36,31 @@ def dashboard(request):
 
     # Ratio
     if losses != 0:
-        ratio = wins / float(losses)
+        ratio = round(wins / float(losses), 2)
 
     # Upcoming games
+    upcoming_games = []
+    results = db.query(Game).filter(Game.time > datetime.now()).order_by(desc(Game.time)).limit(4)
+    for game in results:
+        game.hour, game.min, game.m = game.get_printed_time()
+        game.lefts, game.rights = game.separate_players()
+        upcoming_games.append(game)
 
     # Previous Games
+    previous_games = []
+    results = db.query(Game).filter(Game.time < datetime.now()).order_by(desc(Game.time)).limit(4)
+    for game in results:
+        game.hour, game.min, game.m = game.get_printed_time()
+        game.lefts, game.rights = game.separate_players()
+        previous_games.append(game)
+
+    leaders = get_leaderboard()
 
     return {
         'wins': wins,
         'losses': losses,
-        'ratio': ratio
+        'ratio': ratio,
+        'upcoming_games': upcoming_games,
+        'previous_games': previous_games,
+        'leaders': leaders
     }

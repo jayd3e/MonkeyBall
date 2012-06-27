@@ -22,16 +22,16 @@
     <input name="hour" maxlength="2" type="text" value="${ hour }" />
     <input name="min" maxlength="2" type="text" value="${ min }" />
     <select name="m">
-        <option value="0"
-        % if m == 0:
+        <option value="AM"
+        % if m == "AM":
             selected
         % endif
         >AM</option>
-        <option
-        % if m == 1:
+        <option value="PM"
+        % if m == "PM":
             selected
         % endif
-        value="1">PM</option>
+        >PM</option>
     </select>
 </%def>
 

@@ -1,32 +1,27 @@
 <%inherit file="layouts/base.mako" />
 
+<%def name="player(id, name)">
+    <div class="player">
+        <img src="http://graph.facebook.com/${ id }/picture"/>
+        <a href="/">${ name }</a>
+    </div>
+</%def>
+
 <%def name="double(game)">
     <div class="game doubles">
         <div class="left_players">
-            <div class="player">
-                <img src="/static/img/avatar.png"/>
-                <a href="/">jayd3e</a>
-            </div>
+            ${ player(game.lefts[0]['id'], game.lefts[0]['name'])}
             <div class="divider">-- and --</div>
-            <div class="player">
-                <img src="/static/img/avatar.png"/>
-                <a href="/">jayd3e</a>
-            </div>
+            ${ player(game.lefts[1]['id'], game.lefts[1]['name'])}
         </div>
         <div class="middle">
             <div class="time">@3:00pm</div>
             <div class="versus">vs</div>
         </div>
         <div class="right_players">
-            <div class="player">
-                <img src="/static/img/avatar.png"/>
-                <a href="/">jayd3e</a>
-            </div>
+            ${ player(game.rights[0]['id'], game.rights[0]['name'])}
             <div class="divider">-- and --</div>
-            <div class="player">
-                <img src="/static/img/avatar.png"/>
-                <a href="/">jayd3e</a>
-            </div>
+            ${ player(game.rights[1]['id'], game.rights[1]['name'])}
         </div>
     </div>
 </%def>
@@ -34,20 +29,16 @@
 <%def name="single(game)">
     <div class="game singles">
         <div class="left_players">
-            <div class="player">
-                <img src="/static/img/avatar.png"/>
-                <a href="/">jayd3e</a>
-            </div>
+            ${ player(game.lefts[0]['id'], game.lefts[0]['name'])}
         </div>
         <div class="middle">
-            <div class="time">@3:00pm</div>
+            <div class="time">
+                @${ game.hour }:${ "%02d" % game.time.minute }${ game.m }
+            </div>
             <div class="versus">vs</div>
         </div>
         <div class="right_players">
-            <div class="player">
-                <img src="/static/img/avatar.png"/>
-                <a href="/">jayd3e</a>
-            </div>
+            ${ player(game.rights[0]['id'], game.rights[0]['name'])}
         </div>
     </div>
 </%def>
@@ -84,7 +75,6 @@
                 </table>
             </div>
         </article>
-        <%doc>
         <aside class="right">
             <div class="upcoming_games">
                 <h2>Upcoming Games</h2>
@@ -107,6 +97,5 @@
                 % endfor
             </div>
         </aside>
-        </%doc>
     </div>
 </%def>
