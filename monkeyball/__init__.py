@@ -1,6 +1,13 @@
 from pyramid.config import Configurator
 from monkeyball.resources import Site
 
+# Models
+from monkeyball.models.base import Base
+from monkeyball.models.game import Game
+from monkeyball.models.join import Join
+from monkeyball.models.message import Message
+from monkeyball.models.player import Player
+
 
 def main(global_config, **settings):
     '''Main config function'''
