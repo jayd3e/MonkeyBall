@@ -5,7 +5,7 @@
             <a class="primary" href="/game/create">Start</a>
         </li>
         <li>
-            <a class="primary" href="#">Queue</a>
+            <a class="primary" href="/queue">Queue</a>
         </li>
     </ul>
     <ul class="account horiz-list">

@@ -32,12 +32,20 @@ $(function() {
     var Router = Backbone.Router.extend({
 
         routes: {
-            "game/create": "create"
+            "game/create": "create",
+            "queue": "queue"
         },
 
         create: function() {
             var Game = monkeyball.module("game");
             var game = new Game.Views.Creator({el: $(".create_game")});
+        },
+
+        queue: function() {
+            var Queue = monkeyball.module("queue");
+            var queue = new Queue.Views.QueueMe();
+
+            $(".main").prepend(queue.render().el);
         }
 
     });

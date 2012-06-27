@@ -24,6 +24,8 @@ def get_leaderboard(request):
     return players
 
 
+@view_config(route_name='queue',
+             renderer='monkeyball:templates/dashboard.mako')
 @view_config(route_name='index',
              renderer='monkeyball:templates/dashboard.mako')
 def dashboard(request):

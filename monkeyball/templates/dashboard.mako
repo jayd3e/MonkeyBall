@@ -44,6 +44,14 @@
 </%def>
 
 <%def name="body()">
+    <script id="monkeyball_queueme_template" type="handlebars-template">
+        <div class="container">
+            <div class="queueme">
+                Queueing...
+            </div>
+        </div>
+    </script>
+
     <div class="dashboard">
         <article class="left">
             <div class="profile">

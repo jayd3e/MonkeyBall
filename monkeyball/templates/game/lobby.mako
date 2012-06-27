@@ -2,7 +2,11 @@
 
 <%def name="player_large(id, name)">
     <div class="player_large">
-        <img src="http://graph.facebook.com/${ id }/picture"/>
+        % if name == 'monkey':
+            <img src="/static/img/thumbnail_normal.jpeg"/>
+        % else:
+            <img src="http://graph.facebook.com/${ id }/picture"/>
+        % endif
         ${ name }
     </div>
 </%def>
