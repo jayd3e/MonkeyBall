@@ -19,7 +19,9 @@
             ${ player(game.lefts[1]['id'], game.lefts[1]['name'])}
         </div>
         <div class="middle">
-            <div class="time">@3:00pm</div>
+            <div class="time">
+                <a href="/game/${ game.id }">@${ game.hour }:${ "%02d" % game.time.minute }${ game.m }</a>
+            </div>
             <div class="versus">vs</div>
         </div>
         <div class="right_players">
@@ -37,7 +39,7 @@
         </div>
         <div class="middle">
             <div class="time">
-                @${ game.hour }:${ "%02d" % game.time.minute }${ game.m }
+                <a href="/game/${ game.id }">@${ game.hour }:${ "%02d" % game.time.minute }${ game.m }</a>
             </div>
             <div class="versus">vs</div>
         </div>

@@ -13,10 +13,10 @@ from monkeyball.models.game import Game
 from monkeyball.models.join import Join
 from monkeyball.models.message import Message
 from monkeyball.models.player import Player
-from monkeyball.models.notifications import Notification
-from monkeyball.models.notifications import NotificationItem
-from monkeyball.models.notifications import GameInviteNotification
-from monkeyball.models.notifications import GameStartNotification
+from monkeyball.models.notification import Notification
+from monkeyball.models.notification import NotificationItem
+from monkeyball.models.notification import GameInviteNotification
+from monkeyball.models.notification import GameStartNotification
 
 from sqlalchemy import engine_from_config
 from sqlalchemy.orm import sessionmaker

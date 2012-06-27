@@ -33,7 +33,7 @@
                 </div>
                 <div class="middle">
                     <div class="time">
-                        @${ hour }:${ "%02d" % game.time.minute }${ m }
+                        <a href="/game/${ game.id }">@${ hour }:${ "%02d" % game.time.minute }${ m }</a>
                     </div>
                     <div class="versus">vs</div>
                 </div>

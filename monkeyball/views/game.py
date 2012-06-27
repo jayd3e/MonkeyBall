@@ -3,6 +3,8 @@ from pyramid.view import view_config
 from pyramid.httpexceptions import HTTPFound
 from monkeyball.models.game import Game
 from monkeyball.models.join import Join
+from monkeyball.models.notification import GameInviteNotification
+from monkeyball.models.notification import Notification
 
 
 @view_config(route_name='game',
@@ -69,6 +71,17 @@ def create(request):
                         game=game,
                         side=1)
             db.add(join)
+
+        group_invite_notification = GameInviteNotification(player_id=request.player.id,
+                                                           game=game,
+                                                           discriminator="game_invite",
+                                                           created=datetime.now())
+        db.add(group_invite_notification)
+        lefts.extend(rights)
+        for id in lefts:
+            notification = Notification(player_id=id,
+                                        notification_item=group_invite_notification)
+            db.add(notification)
 
         db.flush()
         return HTTPFound('/game/%s' % game.id)

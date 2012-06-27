@@ -36,6 +36,12 @@ $(function() {
             "queue": "queue"
         },
 
+        initialize: function() {
+            $("#notifications_button").click(function() {
+                $('.notifications').toggle();
+            });
+        },
+
         create: function() {
             var Game = monkeyball.module("game");
             var game = new Game.Views.Creator({el: $(".create_game")});

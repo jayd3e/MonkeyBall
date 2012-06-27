@@ -1,13 +1,13 @@
+<%namespace name="notification_" file="../notifications.mako" />
+
 <%def name="header(here)">
     <a class="logo" href="/">MonkeyBall</a>
     <ul class="main_nav horiz-list">
         <li>
-            <a class="regular" href="#">${ len(notifications) }</a>
+            <a class="regular" id="notifications_button" href="#">${ len(notifications) }</a>
             <div class="notifications">
-                % for notifcation in notifications:
-                    <div class="notification">
-
-                    </div>
+                % for notification in notifications:
+                    ${ notification_.notification(notification) }
                 % endfor
             </div>
         </li>

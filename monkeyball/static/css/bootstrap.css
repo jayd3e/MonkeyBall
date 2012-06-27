@@ -150,13 +150,28 @@ body {
 
 .header {
   height: 35px;
-  padding: 0px 5px; }
+  padding: 0px 5px;
+  position: relative; }
   .header .logo {
     float: left;
     padding: 5px 5px 5px 0px;
     font-size: 20px;
     color: #a9bd38;
     text-shadow: 1px 1px black; }
+  .header .notifications {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color: #999;
+    position: absolute;
+    display: none;
+    background-color: #111;
+    border-radius: 3px;
+    top: 40px;
+    left: 117px;
+    color: #FFF;
+    font-size: 12px;
+    font-weight: 300;
+    padding: 5px; }
   .header .main_nav {
     float: left; }
     .header .main_nav li {
@@ -263,7 +278,7 @@ body {
     width: 160px; }
   .game .middle {
     float: left; }
-    .game .middle .time {
+    .game .middle .time a {
       font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
       font-size: 14px;
       color: #999;

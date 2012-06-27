@@ -26,8 +26,11 @@
         float: left;
 
         .time {
-            @include base();
-            color: #A9BD38;
+
+            a {
+                @include base();
+                color: #A9BD38;
+            }
         }
 
         .versus {
