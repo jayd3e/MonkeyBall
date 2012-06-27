@@ -36,8 +36,8 @@ $(function() {
         },
 
         create: function() {
-            Game = monkeyball.module("game");
-            game = new Game.Views.Creator({el: $(".create_game")});
+            var Game = monkeyball.module("game");
+            var game = new Game.Views.Creator({el: $(".create_game")});
         }
 
     });

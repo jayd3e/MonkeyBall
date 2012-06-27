@@ -30,5 +30,6 @@
     <script type="text/javascript" charset="utf-8" src="${request.static_url('monkeyball:static/js/libs/handlebars.js')}"></script>
 
     <script type="text/javascript" charset="utf-8" src="${request.static_url('monkeyball:static/js/index.js')}"></script>
+    <script type="text/javascript" charset="utf-8" src="${request.static_url('monkeyball:static/js/modules/player.js')}"></script>
     <script type="text/javascript" charset="utf-8" src="${request.static_url('monkeyball:static/js/modules/game.js')}"></script>
 </html>

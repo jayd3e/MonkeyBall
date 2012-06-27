@@ -132,6 +132,15 @@
     .actions {
         text-align: left;
         padding: 15px 0px 0px 0px;
+
+        input {
+            border: none;
+            outline: none;
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
     }
 }
 

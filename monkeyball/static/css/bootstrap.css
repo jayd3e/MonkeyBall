@@ -117,6 +117,10 @@ body {
   max-width: 1280px;
   padding: 0px 10px; }
 
+.avatar_small {
+  height: 25px;
+  width: 25px; }
+
 .header {
   height: 35px;
   padding: 0px 5px; }
@@ -132,13 +136,13 @@ body {
       margin: 5px 5px 0px 5px; }
   .header .account {
     float: right;
-    padding-top: 6px;
-    height: 35px; }
+    padding-top: 4px;
+    height: 31px; }
     .header .account li {
       margin-left: 10px; }
       .header .account li a {
         color: #FFF;
-        vertical-align: text-bottom; }
+        vertical-align: middle; }
 
 .dashboard {
   position: relative; }
@@ -286,6 +290,11 @@ body {
   .create_game .actions {
     text-align: left;
     padding: 15px 0px 0px 0px; }
+    .create_game .actions input {
+      border: none;
+      outline: none; }
+      .create_game .actions input:hover {
+        cursor: pointer; }
 
 .game_lobby {
   background-color: #222;
@@ -360,15 +369,32 @@ body {
   color: #4F87C8; }
 
 .player_input {
-  text-align: left; }
+  text-align: left;
+  position: relative; }
   .player_input input {
     font-size: 35px;
     width: 320px;
     color: #2e2e2e;
     vertical-align: text-bottom;
-    height: 43px; }
+    height: 45px; }
     .player_input input:focus {
       outline: none; }
+    .player_input input[disabled] {
+      color: #4F87C8;
+      background-color: #333;
+      border: 2px solid #333;
+      padding-left: 5px;
+      width: 315px; }
+  .player_input .remove {
+    display: none;
+    color: #8A241B;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 20px;
+    position: absolute;
+    top: 15px;
+    right: 10px; }
+    .player_input .remove:hover {
+      cursor: pointer; }
 
 .player_large {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;

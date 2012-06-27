@@ -6,16 +6,39 @@
 
 .player_input {
     text-align: left;
+    position: relative;
 
     input {
         font-size: 35px;
         width: 320px;
         color: #2e2e2e;
         vertical-align: text-bottom;
-        height: 43px;
+        height: 45px;
 
         &:focus {
             outline: none;
+        }
+
+        &[disabled] {
+            color: #4F87C8;
+            background-color: #333;
+            border: 2px solid #333;
+            padding-left: 5px;
+            width: 315px;
+        }
+    }
+
+    .remove {
+        display: none;
+        color: #8A241B;
+        font-family: $monkeyball-base-font-family;
+        font-size: 20px;
+        position: absolute;
+        top: 15px;
+        right: 10px;
+
+        &:hover {
+            cursor: pointer;
         }
     }
 }

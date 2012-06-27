@@ -48,11 +48,14 @@ def main(global_config, **settings):
     config.include('velruse.providers.facebook')
     config.add_facebook_login_from_settings(prefix='facebook.')
 
-    #Routes
+    # Routes
     config.add_route('index', '/')
     config.add_route('game_create', '/game/create')
     config.add_route('game', '/game/{id}')
     config.add_route('login', '/login')
+
+    # Api
+    config.add_route('api_players', '/api/players')
 
     config.scan('monkeyball')
     return config.make_wsgi_app()

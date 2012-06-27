@@ -1,72 +1,65 @@
 <%inherit file="../layouts/base.mako" />
 
+<%def name="player_input(side)">
+    <div class="player_input">
+        <img src="/static/img/thumbnail_normal.jpeg"/>
+        <input name="${ side }_id" type="hidden" value="0" />
+        <input name="${ side }_user" type="text" value="monkey" />
+        <a class="remove">X</a>
+    </div>
+</%def>
+
 <%def name="body()">
-    <div class="game create_game">
-        <div class="inner">
-            <ul class="options horiz-list">
-                <li class="singles">
-                    1v1
-                </li>
-                <li class="doubles">
-                    2v2
-                </li>
-            </ul>
-            <div class="creator">
-                <div class="doubles">
-                    <div class="left_players">
-                        <div class="player_input">
-                            <img src="/static/img/thumbnail_normal.jpeg"/>
-                            <input name="user" type="text" value="player"/>
+    <form method="POST" action="/game/create">
+        <div class="game create_game">
+            <div class="inner">
+                <ul class="options horiz-list">
+                    <li class="singles">
+                        1v1
+                    </li>
+                    <li class="doubles">
+                        2v2
+                    </li>
+                </ul>
+                <div class="creator">
+                    <div class="doubles">
+                        <div class="left_players">
+                            ${ player_input("left") }
+                            <div class="divider">-- and --</div>
+                            ${ player_input("left") }
                         </div>
-                        <div class="divider">-- and --</div>
-                        <div class="player_input">
-                            <img src="/static/img/thumbnail_normal.jpeg"/>
-                            <input name="user" type="text" value="player"/>
+                        <div class="middle">
+                            <div class="time">
+                                <input type="text" name="time" value="time"/>
+                            </div>
+                            <div class="versus">vs</div>
                         </div>
-                    </div>
-                    <div class="middle">
-                        <div class="time">
-                            <input type="text" name="time" value="time"/>
-                        </div>
-                        <div class="versus">vs</div>
-                    </div>
-                    <div class="right_players">
-                        <div class="player_input">
-                            <img src="/static/img/thumbnail_normal.jpeg"/>
-                            <input name="user" type="text" value="player"/>
-                        </div>
-                        <div class="divider">-- and --</div>
-                        <div class="player_input">
-                            <img src="/static/img/thumbnail_normal.jpeg"/>
-                            <input name="user" type="text" value="player"/>
+                        <div class="right_players">
+                            ${ player_input("right") }
+                            <div class="divider">-- and --</div>
+                            ${ player_input("right") }
                         </div>
                     </div>
-                </div>
-                <div class="singles">
-                    <div class="left_players">
-                        <div class="player_input">
-                            <img src="/static/img/thumbnail_normal.jpeg"/>
-                            <input name="user" type="text" value="player"/>
+                    <div class="singles">
+                        <div class="left_players">
+                            ${ player_input("left") }
                         </div>
-                    </div>
-                    <div class="middle">
-                        <div class="time">
-                            <input type="text" name="time" value="time"/>
+                        <div class="middle">
+                            <div class="time">
+                                <input type="text" name="time" value="time"/>
+                            </div>
+                            <div class="versus">vs</div>
                         </div>
-                        <div class="versus">vs</div>
-                    </div>
-                    <div class="right_players">
-                        <div class="player_input">
-                            <img src="/static/img/thumbnail_normal.jpeg"/>
-                            <input name="user" type="text" value="player"/>
+                        <div class="right_players">
+                            ${ player_input("right") }
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="actions">
-                <a class="primary" href="/">Send Invites</a>
-                <a class="primary" href="/">Cancel</a>
+                <div class="actions">
+                    <input class="primary" name="submit" type="submit" />
+                    <input class="primary" name="cancel" type="submit" />
+                </div>
             </div>
         </div>
-    </div>
+    </form>
 </%def>

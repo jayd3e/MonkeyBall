@@ -11,7 +11,7 @@
     <ul class="account horiz-list">
         <li>
             <a href="/">
-                <img src="/static/img/avatar.png"/>
+                <img class="avatar_small" src="http://graph.facebook.com/${ request.player.id }/picture"/>
             </a>
         </li>
         <li>
