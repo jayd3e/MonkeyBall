@@ -13,6 +13,10 @@
         color: #2e2e2e;
         vertical-align: text-bottom;
         height: 43px;
+
+        &:focus {
+            outline: none;
+        }
     }
 }
 

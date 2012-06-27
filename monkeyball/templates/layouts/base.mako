@@ -21,4 +21,14 @@
             </div>
         </div>
     </body>
+
+    <!-- Third-Party Libraries -->
+    <script type="text/javascript" charset="utf-8" src="${request.static_url('monkeyball:static/js/libs/jquery-1.7.2.min.js')}"></script>
+    <script type="text/javascript" charset="utf-8" src="${request.static_url('monkeyball:static/js/libs/jquery-ui-1.8.21.custom.min.js')}"></script>
+    <script type="text/javascript" charset="utf-8" src="${request.static_url('monkeyball:static/js/libs/underscore.js')}"></script>
+    <script type="text/javascript" charset="utf-8" src="${request.static_url('monkeyball:static/js/libs/backbone.js')}"></script>
+    <script type="text/javascript" charset="utf-8" src="${request.static_url('monkeyball:static/js/libs/handlebars.js')}"></script>
+
+    <script type="text/javascript" charset="utf-8" src="${request.static_url('monkeyball:static/js/index.js')}"></script>
+    <script type="text/javascript" charset="utf-8" src="${request.static_url('monkeyball:static/js/modules/game.js')}"></script>
 </html>

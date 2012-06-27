@@ -4,9 +4,9 @@
     <div class="dashboard">
         <article class="left">
             <div class="profile">
-                <h2><span class="wins">Wins:</span> <span class="num">23</span></h2>
-                <h2><span class="losses">Losses:</span> <span class="num">24</span></h2>
-                <h2><span class="ratio">Ratio:</span> <span class="num">1.5</span></h2>
+                <h2><span class="wins">Wins:</span> <span class="num">${ wins }</span></h2>
+                <h2><span class="losses">Losses:</span> <span class="num">${ losses }</span></h2>
+                <h2><span class="ratio">Ratio:</span> <span class="num">${ ratio }</span></h2>
             </div>
             <div class="leaderboard">
                 <h2>Leaders</h2>

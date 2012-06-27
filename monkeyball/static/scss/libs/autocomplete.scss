@@ -1,0 +1,17 @@
+.ui-autocomplete {
+    background-color: #FFF;
+    width: 320px;
+
+    li {
+        padding: 4px;
+
+        &:hover {
+            cursor: pointer;
+        }
+
+        a {
+            font-size: 35px;
+            color: #2E2E2E;
+        }
+    }
+}

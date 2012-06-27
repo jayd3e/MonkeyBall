@@ -57,6 +57,25 @@
     }
 }
 
+.creator > .doubles {
+
+    .middle {
+        padding-top: 35px;
+    }
+}
+
+.creator > .singles {
+    display: none;
+
+    .left_players, .right_players {
+        margin-top: 17px;
+    }
+
+    .middle {
+        padding-top: 5px;
+    }
+}
+
 .create_game {
     @include panel();
 
@@ -97,7 +116,6 @@
         }
 
         .middle {
-            padding-top: 35px;
             margin: 0px 25px;
 
             .versus {
