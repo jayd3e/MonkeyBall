@@ -67,16 +67,18 @@ def create(request):
         db.add(group_invite_notification)
 
         for left in lefts:
-            notification = Notification(player_id=int(left),
-                                        notification_item=group_invite_notification,
-                                        side=0)
-            db.add(notification)
+            send_notification(request,
+                              group_invite_notification,
+                              left,
+                              game.id,
+                              0)
 
         for right in rights:
-            notification = Notification(player_id=int(right),
-                                        notification_item=group_invite_notification,
-                                        side=1)
-            db.add(notification)
+            send_notification(request,
+                              group_invite_notification,
+                              right,
+                              game.id,
+                              1)
 
         db.flush()
         return HTTPFound('/game/%s' % game.id)
@@ -97,17 +99,30 @@ def create(request):
         'm': m
     }
 
+
+def send_notification(request, notification_item, player_id, game_id, side):
+    if player_id == request.player.id:
+        join = Join(player_id=int(player_id),
+                    game_id=game_id,
+                    side=side)
+        request.db.add(join)
+    notification = Notification(player_id=int(player_id),
+                                notification_item=notification_item,
+                                side=side)
+    request.db.add(notification)
+
+
 @view_config(route_name='game_join')
-def create(request):
+def join(request):
     db = request.db
     id = request.matchdict['id']
 
-    game_invite_notification = db.query(GameInviteNotification).filter_by(game_id=id)
+    game_invite_notification = db.query(GameInviteNotification).filter_by(game_id=id).first()
     notification = db.query(Notification).filter_by(player_id=request.player.id,
-                                                    notification_item_id=game_invite_notification.id)
+                                                    notification_item_id=game_invite_notification.id).first()
 
     join = Join(player_id=int(notification.player.id),
-                game_id=notification.game.id,
+                game_id=game_invite_notification.game.id,
                 side=notification.side)
     db.add(join)
 

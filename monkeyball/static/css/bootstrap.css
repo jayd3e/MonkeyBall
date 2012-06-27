@@ -171,7 +171,8 @@ body {
     color: #FFF;
     font-size: 12px;
     font-weight: 300;
-    padding: 5px; }
+    padding: 5px;
+    z-index: 1000; }
   .header .main_nav {
     float: left; }
     .header .main_nav li {
