@@ -38,12 +38,11 @@
     padding: 10px 10px 20px 10px;
 }
 
-.primary {
-    @include gradient(#8A241B, #70231C);
+@mixin button(){
     display: inline-block;
     padding: 5px;
+    margin: 0px;
     border-radius: 3px;
-    color: #FFF;
     text-shadow: 0 -1px rgba(34, 25, 25, 0.3);
     font-weight: 600;
     border: none;
@@ -56,6 +55,18 @@
     &:hover {
         cursor: pointer;
     }
+}
+
+.regular {
+    @include button;
+    @include gradient(#FFF, #f2f2f2);
+    color: #222;
+}
+
+.primary {
+    @include button;
+    @include gradient(#8A241B, #70231C);
+    color: #FFF;
 }
 
 .horiz-list {

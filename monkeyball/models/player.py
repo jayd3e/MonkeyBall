@@ -14,6 +14,7 @@ class Player(Base):
     name = Column(String)
 
     games = association_proxy('joins', 'game')
+    notifications = association_proxy('notification', 'notification_item')
 
     def wins_losses(self):
         wins = 0

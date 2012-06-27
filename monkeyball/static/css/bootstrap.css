@@ -63,7 +63,37 @@ tt, code, kbd, samp {
 * Base Mixins
 *
 */
+.regular {
+  display: inline-block;
+  padding: 5px;
+  margin: 0px;
+  border-radius: 3px;
+  text-shadow: 0 -1px rgba(34, 25, 25, 0.3);
+  font-weight: 600;
+  border: none;
+  outline: none;
+  background-color: #f2f2f2;
+  background-image: url("None");
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(white), to(#f2f2f2));
+  background-image: -webkit-linear-gradient(top, white, #f2f2f2);
+  background-image: -moz-linear-gradient(top, white, #f2f2f2);
+  background-image: -ms-linear-gradient(top, white, #f2f2f2);
+  background-image: -o-linear-gradient(top, white, #f2f2f2);
+  color: #222; }
+  .regular.big {
+    font-size: 25px; }
+  .regular:hover {
+    cursor: pointer; }
+
 .primary {
+  display: inline-block;
+  padding: 5px;
+  margin: 0px;
+  border-radius: 3px;
+  text-shadow: 0 -1px rgba(34, 25, 25, 0.3);
+  font-weight: 600;
+  border: none;
+  outline: none;
   background-color: #70231c;
   background-image: url("None");
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#8a241b), to(#70231c));
@@ -71,14 +101,7 @@ tt, code, kbd, samp {
   background-image: -moz-linear-gradient(top, #8a241b, #70231c);
   background-image: -ms-linear-gradient(top, #8a241b, #70231c);
   background-image: -o-linear-gradient(top, #8a241b, #70231c);
-  display: inline-block;
-  padding: 5px;
-  border-radius: 3px;
-  color: #FFF;
-  text-shadow: 0 -1px rgba(34, 25, 25, 0.3);
-  font-weight: 600;
-  border: none;
-  outline: none; }
+  color: #FFF; }
   .primary.big {
     font-size: 25px; }
   .primary:hover {

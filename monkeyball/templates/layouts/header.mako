@@ -2,6 +2,16 @@
     <a class="logo" href="/">MonkeyBall</a>
     <ul class="main_nav horiz-list">
         <li>
+            <a class="regular" href="#">${ len(notifications) }</a>
+            <div class="notifications">
+                % for notifcation in notifications:
+                    <div class="notification">
+
+                    </div>
+                % endfor
+            </div>
+        </li>
+        <li>
             <a class="primary" href="/game/create">Start</a>
         </li>
         <li>

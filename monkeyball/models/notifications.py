@@ -51,7 +51,7 @@ class GameInviteNotification(NotificationItem):
 
 
 class GameStartNotification(NotificationItem):
-    __tablename__ = 'game_invite_notifications'
+    __tablename__ = 'game_start_notifications'
 
     id = Column(Integer, ForeignKey('notification_items.id'), primary_key=True)
     game_id = Column(Integer, ForeignKey('games.id'))
