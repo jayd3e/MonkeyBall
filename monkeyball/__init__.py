@@ -56,6 +56,7 @@ def main(global_config, **settings):
     config.add_route('index', '/')
     config.add_route('queue', '/queue')
     config.add_route('game_create', '/game/create')
+    config.add_route('game_join', '/game/join/{id}')
     config.add_route('game', '/game/{id}')
     config.add_route('login', '/login')
 

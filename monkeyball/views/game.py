@@ -60,27 +60,22 @@ def create(request):
                     created=datetime.now())
         db.add(game)
 
-        for left in lefts:
-            join = Join(player_id=int(left),
-                        game=game,
-                        side=0)
-            db.add(join)
-
-        for right in rights:
-            join = Join(player_id=int(right),
-                        game=game,
-                        side=1)
-            db.add(join)
-
         group_invite_notification = GameInviteNotification(player_id=request.player.id,
                                                            game=game,
                                                            discriminator="game_invite",
                                                            created=datetime.now())
         db.add(group_invite_notification)
-        lefts.extend(rights)
-        for id in lefts:
-            notification = Notification(player_id=id,
-                                        notification_item=group_invite_notification)
+
+        for left in lefts:
+            notification = Notification(player_id=int(left),
+                                        notification_item=group_invite_notification,
+                                        side=0)
+            db.add(notification)
+
+        for right in rights:
+            notification = Notification(player_id=int(right),
+                                        notification_item=group_invite_notification,
+                                        side=1)
             db.add(notification)
 
         db.flush()
@@ -101,3 +96,21 @@ def create(request):
         'min': min,
         'm': m
     }
+
+@view_config(route_name='game_join')
+def create(request):
+    db = request.db
+    id = request.matchdict['id']
+
+    game_invite_notification = db.query(GameInviteNotification).filter_by(game_id=id)
+    notification = db.query(Notification).filter_by(player_id=request.player.id,
+                                                    notification_item_id=game_invite_notification.id)
+
+    join = Join(player_id=int(notification.player.id),
+                game_id=notification.game.id,
+                side=notification.side)
+    db.add(join)
+
+    db.delete(notification)
+    db.flush()
+    return HTTPFound('/game/' + id)
