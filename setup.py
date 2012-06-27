@@ -17,7 +17,8 @@ requires = [
     'sqlalchemy',
     'psycopg2',
     'alembic',
-    'waitress'
+    'waitress',
+    'velruse'
 ]
 
 tests_require = requires + [

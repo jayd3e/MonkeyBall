@@ -15,7 +15,7 @@
             </a>
         </li>
         <li>
-            <a href="/">jayd3e</a>
+            <a href="/">${ request.player.name }</a>
         </li>
     </ul>
 </%def>

@@ -29,7 +29,7 @@ class TestModels(unittest.TestCase):
                     time=datetime.now(),
                     created=datetime.now())
         player = Player(id=1,
-                        username="jayd3e")
+                        name="jayd3e")
         join = Join(game_id=1,
                     player_id=1)
 
@@ -56,7 +56,7 @@ class TestModels(unittest.TestCase):
                     time=datetime.now(),
                     created=datetime.now())
         player = Player(id=1,
-                        username="jayd3e")
+                        name="jayd3e")
         message = Message(game_id=1,
                           player_id=1,
                           body="U Suk!")
@@ -75,7 +75,7 @@ class TestModels(unittest.TestCase):
         session = self.Session()
 
         player = Player(id=1,
-                        username="jayd3e")
+                        name="jayd3e")
         game = Game(id=1,
                     completed=False,
                     left_score=0,
