@@ -85,7 +85,7 @@
     }
 
     .options {
-        margin-bottom: 20px;
+        margin-bottom: 5px;
 
         li {
             @include base();
@@ -104,6 +104,14 @@
         }
     }
 
+    .error {
+        @include base();
+
+        text-align: left;
+        color: #8A241B;
+        padding: 10px 0px;
+    }
+
     .creator {
         overflow: auto;
 
@@ -117,6 +125,20 @@
 
         .middle {
             margin: 0px 25px;
+
+            .time {
+
+                input {
+                    font-size: 20px;
+                    width: 30px;
+                }
+
+                select {
+                    @include base();
+
+                    font-size: 30px;
+                }
+            }
 
             .versus {
                 width: auto;

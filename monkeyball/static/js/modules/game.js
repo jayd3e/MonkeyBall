@@ -21,7 +21,7 @@
             "mouseover .player_input.disabled": "mouseover_disabled",
             "mouseout .player_input.disabled": "mouseout_disabled",
             "click .player_input .remove": "remove",
-            "click .input[type='submit']": "submit"
+            "click input:submit": "submit"
         },
         initialize: function() {
             _.bindAll(this, 'search', 'select');
@@ -91,9 +91,32 @@
             $(hidden).val("0");
         },
         submit: function() {
-            return this.validate();
+            error = this.validate();
+
+            if (error === true) {
+                return true;
+            }
+            else {
+                this.$('.error').html(error);
+            }
+
+            return false;
         },
         validate: function() {
+            var hour = this.$(".time input[name='hour']").val();
+            var min = this.$(".time input[name='min']").val();
+
+            hour = parseInt(hour);
+            min = parseInt(min);
+
+            if (! (1 <= hour && hour <= 12) ) {
+                return "Specify an hour between 1 and 12.";
+            }
+
+            if (! (0 <= min && min <= 60) ) {
+                return "Specify a minute between 1 and 60.";
+            }
+
             return true;
         }
     });

@@ -9,6 +9,16 @@
     </div>
 </%def>
 
+<%def name="time()">
+    <input name="hour" maxlength="2" type="text" value="0" />
+    <input name="min" maxlength="2" type="text" value="0" />
+    <select name="m">
+        <option value="0">AM</option>
+        <option value="1">PM</option>
+    </select>
+</%def>
+
+
 <%def name="body()">
     <form method="POST" action="/game/create">
         <div class="game create_game">
@@ -21,6 +31,7 @@
                         2v2
                     </li>
                 </ul>
+                <div class="error"></div>
                 <div class="creator">
                     <div class="doubles">
                         <div class="left_players">
@@ -30,7 +41,7 @@
                         </div>
                         <div class="middle">
                             <div class="time">
-                                <input type="text" name="time" value="time"/>
+                                ${ time() }
                             </div>
                             <div class="versus">vs</div>
                         </div>
@@ -46,7 +57,7 @@
                         </div>
                         <div class="middle">
                             <div class="time">
-                                <input type="text" name="time" value="time"/>
+                                ${ time() }
                             </div>
                             <div class="versus">vs</div>
                         </div>
