@@ -1,7 +1,8 @@
 from sqlalchemy import (
     Column,
     ForeignKey,
-    Integer
+    Integer,
+    BigInteger
 )
 from sqlalchemy.orm import relationship
 
@@ -11,7 +12,7 @@ from monkeyball.models.base import Base
 class Join(Base):
     __tablename__ = 'joins'
     game_id = Column(Integer, ForeignKey('games.id'))
-    player_id = Column(Integer, ForeignKey('players.id'))
+    player_id = Column(BigInteger, ForeignKey('players.id'))
     # 0 = left, 1 = right
     side = Column(Integer)
 

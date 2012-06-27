@@ -21,5 +21,10 @@ class Game(Base):
 
     players = association_proxy('joins', 'player')
 
+    def side_of_player(self, player_id):
+        for join in self.joins:
+            if join.player.id is player_id:
+                return join.side
+
     def __repr__(self):
         return "<Game('%s')>" % (self.id)

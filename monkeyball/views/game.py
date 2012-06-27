@@ -86,7 +86,7 @@ def create(request):
             db.add(join)
 
         for right in rights:
-            join = Join(player_id=int(left),
+            join = Join(player_id=int(right),
                         game=game,
                         side=1)
             db.add(join)

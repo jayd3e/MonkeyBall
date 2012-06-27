@@ -23,7 +23,7 @@ def login_complete_view(request):
     userid = None
     for account in profile['accounts']:
         if account['domain'] == 'facebook.com':
-            userid = account['userid']
+            userid = int(account['userid'])
             break
 
     if userid is not None:

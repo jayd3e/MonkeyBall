@@ -84,6 +84,7 @@
                 </table>
             </div>
         </article>
+        <%doc>
         <aside class="right">
             <div class="upcoming_games">
                 <h2>Upcoming Games</h2>
@@ -106,5 +107,6 @@
                 % endfor
             </div>
         </aside>
+        </%doc>
     </div>
 </%def>

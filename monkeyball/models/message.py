@@ -3,6 +3,7 @@ from sqlalchemy import (
     ForeignKey,
     Integer,
     String,
+    BigInteger
 )
 from sqlalchemy.orm import relationship
 
@@ -12,7 +13,7 @@ from monkeyball.models.base import Base
 class Message(Base):
     __tablename__ = 'messages'
     game_id = Column(Integer, ForeignKey('games.id'))
-    player_id = Column(Integer, ForeignKey('players.id'))
+    player_id = Column(BigInteger, ForeignKey('players.id'))
     body = Column(String(300))
 
     game = relationship('Game', backref="messages")
