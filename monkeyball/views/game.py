@@ -70,14 +70,14 @@ def create(request):
             send_notification(request,
                               group_invite_notification,
                               left,
-                              game.id,
+                              game,
                               0)
 
         for right in rights:
             send_notification(request,
                               group_invite_notification,
                               right,
-                              game.id,
+                              game,
                               1)
 
         db.flush()
@@ -100,10 +100,10 @@ def create(request):
     }
 
 
-def send_notification(request, notification_item, player_id, game_id, side):
-    if player_id == request.player.id:
+def send_notification(request, notification_item, player_id, game, side):
+    if int(player_id) == request.player.id:
         join = Join(player_id=int(player_id),
-                    game_id=game_id,
+                    game=game,
                     side=side)
         request.db.add(join)
     notification = Notification(player_id=int(player_id),

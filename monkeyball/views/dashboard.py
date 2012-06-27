@@ -10,7 +10,7 @@ from monkeyball.models.player import Player
 CacheRegion.add_region("short_term", expires=300)
 
 
-@cache_region('short_term')
+# @cache_region('short_term')
 def get_leaderboard(request):
     db = request.db
 
