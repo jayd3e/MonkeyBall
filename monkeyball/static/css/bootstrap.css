@@ -150,6 +150,12 @@ body {
 
 .dashboard {
   position: relative; }
+  .dashboard .notify {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color: #999;
+    color: #FFF;
+    font-size: 14px; }
   .dashboard .left {
     padding: 5px 475px 5px 5px; }
     .dashboard .left .profile {

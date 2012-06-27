@@ -1,6 +1,13 @@
 .dashboard {
     position: relative;
 
+    .notify {
+        @include base();
+
+        color: #FFF;
+        font-size: 14px;
+    }
+
     .left {
         padding: 5px 475px 5px 5px;
 

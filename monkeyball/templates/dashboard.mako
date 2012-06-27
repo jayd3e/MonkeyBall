@@ -80,23 +80,35 @@
         <aside class="right">
             <div class="upcoming_games">
                 <h2>Upcoming Games</h2>
-                % for upcoming_game in upcoming_games:
-                    % if upcoming_game.game_type == 0:
-                        ${ single(upcoming_game) }
-                    % else:
-                        ${ double(upcoming_game) }
-                    % endif
-                % endfor
+                % if len(upcoming_games) is not 0:
+                    % for upcoming_game in upcoming_games:
+                        % if upcoming_game.game_type == 0:
+                            ${ single(upcoming_game) }
+                        % else:
+                            ${ double(upcoming_game) }
+                        % endif
+                    % endfor
+                % else:
+                    <div class="game">
+                        <span class="notify">No Upcoming Games</span>
+                    </div>
+                % endif
             </div>
             <div class="previous_games">
                 <h2>Previous Games</h2>
-                % for previous_game in previous_games:
-                    % if previous_game.game_type == 0:
-                        ${ single(previous_game) }
-                    % else:
-                        ${ double(previous_game) }
-                    % endif
-                % endfor
+                % if len(previous_games) is not 0:
+                    % for previous_game in previous_games:
+                        % if previous_game.game_type == 0:
+                            ${ single(previous_game) }
+                        % else:
+                            ${ double(previous_game) }
+                        % endif
+                    % endfor
+                % else:
+                    <div class="game">
+                        <span class="notify">No Previous Games</span>
+                    </div>
+                % endif
             </div>
         </aside>
     </div>
