@@ -2,9 +2,9 @@ from sqlalchemy import (
     Column,
     String,
 )
-from sqlalchemy.ext.association_proxy import association_proxy
+from sqlalchemy.ext.associationproxy import association_proxy
 
-from clusterflunk.models.base import Base
+from monkeyball.models.base import Base
 
 
 class Player(Base):

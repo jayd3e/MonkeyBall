@@ -5,7 +5,7 @@ from sqlalchemy import (
 )
 from sqlalchemy.orm import relationship
 
-from clusterflunk.models.base import Base
+from monkeyball.models.base import Base
 
 
 class Join(Base):

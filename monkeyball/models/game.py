@@ -1,18 +1,17 @@
 from sqlalchemy import (
     Column,
     DateTime,
-    Integer
+    Integer,
+    Boolean
 )
-from sqlalchemy.orm import relationship
-from sqlalchemy.ext.association_proxy import association_proxy
+from sqlalchemy.ext.associationproxy import association_proxy
 
-from clusterflunk.models.base import Base
+from monkeyball.models.base import Base
 
 
 class Game(Base):
     __tablename__ = 'games'
-    # 0 = complete, 1 = scheduled
-    completed = Column(Integer)
+    completed = Column(Boolean)
     left_score = Column(Integer)
     right_score = Column(Integer)
     # 0 = singles, 1 = doubles
@@ -20,7 +19,6 @@ class Game(Base):
     time = Column(DateTime)
     created = Column(DateTime)
 
-    messages = relationship('Message')
     players = association_proxy('joins', 'player')
 
     def __repr__(self):
