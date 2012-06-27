@@ -11,9 +11,3 @@ def lobby(request):
              renderer='monkeyball:templates/game/create.mako')
 def create(request):
     return {}
-
-
-@view_config(route_name='queueing',
-             renderer='monkeyball:templates/game/queueing.mako')
-def queueing(request):
-    return {}
