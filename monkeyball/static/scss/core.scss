@@ -46,9 +46,15 @@
     color: #FFF;
     text-shadow: 0 -1px rgba(34, 25, 25, 0.3);
     font-weight: 600;
+    border: none;
+    outline: none;
 
     &.big {
         font-size: 25px;
+    }
+
+    &:hover {
+        cursor: pointer;
     }
 }
 

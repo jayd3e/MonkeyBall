@@ -15,11 +15,13 @@
     var available_players = new AvailablePlayers();
 
     Game.Views.Creator = Backbone.View.extend({
+        game_type: 1,
+
         events: {
             "click .options > .singles": "singles",
             "click .options > .doubles": "doubles",
-            "mouseover .player_input.disabled": "mouseover_disabled",
-            "mouseout .player_input.disabled": "mouseout_disabled",
+            "mouseover .player_input.readonly": "mouseover_readonly",
+            "mouseout .player_input.readonly": "mouseout_readonly",
             "click .player_input .remove": "remove",
             "click input:submit": "submit"
         },
@@ -32,12 +34,18 @@
             });
         },
         singles: function() {
+            this.game_type = 0;
+
             this.$(".creator > .singles").show();
             this.$(".creator > .doubles").hide();
+            this.$(".creator > .doubles input").prop("disable", true);
         },
         doubles: function() {
+            this.game_type = 1;
+
             this.$(".creator > .doubles").show();
             this.$(".creator > .singles").hide();
+            this.$(".creator > .singles input").prop("disable", true);
         },
         select: function(event, ui) {
             var player_input = $(event.target).parent();
@@ -45,8 +53,8 @@
             var hidden = player_input.children("input[type='hidden']");
 
             $(input).val(ui.item.label);
-            $(input).prop("disabled", true);
-            $(input).parent().addClass("disabled");
+            $(input).attr("readonly", true);
+            $(input).parent().addClass("readonly");
 
             var src = "http://graph.facebook.com/" + ui.item.value + "/picture";
             $(player_input).children("img").prop('src', src);
@@ -68,10 +76,10 @@
                 }
             });
         },
-        mouseover_disabled: function(event) {
+        mouseover_readonly: function(event) {
            $(event.target).parent().children(".remove").show();
         },
-        mouseout_disabled: function(event) {
+        mouseout_readonly: function(event) {
            $(event.target).parent().children(".remove").hide();
         },
         remove: function(event) {
@@ -79,10 +87,10 @@
             var input = player_input.children("input[type='text']");
             var hidden = player_input.children("input[type='hidden']");
 
-            $(player_input).removeClass("disabled");
+            $(player_input).removeClass("readonly");
             $(player_input).children(".remove").hide();
             $(input).val("");
-            $(input).prop("disabled", false);
+            $(input).removeAttr("readonly");
             $(input).focus();
 
             var src = "/static/img/thumbnail_normal.jpeg";
@@ -94,6 +102,15 @@
             error = this.validate();
 
             if (error === true) {
+                this.$("input[name='game_type']").val(this.game_type);
+
+                if(this.game_type === 0) {
+                    this.$(".doubles input").prop("disabled", true);
+                }
+                else {
+                    this.$(".singles input").prop("disabled", true);
+                }
+
                 return true;
             }
             else {
@@ -103,8 +120,15 @@
             return false;
         },
         validate: function() {
-            var hour = this.$(".time input[name='hour']").val();
-            var min = this.$(".time input[name='min']").val();
+            if (this.game_type === 0) {
+                type = ".singles";
+            }
+            else {
+                type = ".doubles";
+            }
+
+            var hour = this.$(type + " .time input[name='hour']").val();
+            var min = this.$(type + " .time input[name='min']").val();
 
             hour = parseInt(hour);
             min = parseInt(min);

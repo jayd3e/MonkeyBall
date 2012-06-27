@@ -76,9 +76,13 @@ tt, code, kbd, samp {
   border-radius: 3px;
   color: #FFF;
   text-shadow: 0 -1px rgba(34, 25, 25, 0.3);
-  font-weight: 600; }
+  font-weight: 600;
+  border: none;
+  outline: none; }
   .primary.big {
     font-size: 25px; }
+  .primary:hover {
+    cursor: pointer; }
 
 .horiz-list {
   overflow: auto; }
@@ -305,11 +309,9 @@ body {
   .create_game .actions {
     text-align: left;
     padding: 15px 0px 0px 0px; }
-    .create_game .actions input {
-      border: none;
-      outline: none; }
-      .create_game .actions input:hover {
-        cursor: pointer; }
+
+.lobby.singles > .left_players, .lobby.singles > .right_players {
+  padding-top: 43px; }
 
 .game_lobby {
   background-color: #222;
@@ -322,6 +324,14 @@ body {
     margin-bottom: 15px; }
     .game_lobby .lobby .divider {
       padding: 15px 0px; }
+    .game_lobby .lobby .left_score_display, .game_lobby .lobby .right_score_display {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      color: #999;
+      float: left;
+      font-size: 50px;
+      margin-top: 41px;
+      color: #FFF; }
     .game_lobby .lobby .left_score, .game_lobby .lobby .right_score {
       float: left;
       font-size: 50px;
@@ -329,7 +339,9 @@ body {
       .game_lobby .lobby .left_score input, .game_lobby .lobby .right_score input {
         font-size: 45px;
         width: 60px; }
-    .game_lobby .lobby .left_score {
+        .game_lobby .lobby .left_score input:hover, .game_lobby .lobby .right_score input:hover {
+          outline: none; }
+    .game_lobby .lobby .left_score, .game_lobby .lobby .left_score_display {
       margin-right: 30px; }
     .game_lobby .lobby .left_players {
       width: auto; }
@@ -341,9 +353,9 @@ body {
         font-size: 45px; }
     .game_lobby .lobby .right_players {
       width: auto; }
-    .game_lobby .lobby .right_score {
+    .game_lobby .lobby .right_score, .game_lobby .lobby .right_score_display {
       margin-left: 30px; }
-  .game_lobby .finalize {
+  .game_lobby input[name='finalize'] {
     margin-bottom: 15px; }
   .game_lobby .chat {
     background-color: #111;
@@ -382,6 +394,9 @@ body {
 
 .player a {
   color: #4F87C8; }
+.player img {
+  width: 22px;
+  height: 22px; }
 
 .player_input {
   text-align: left;
@@ -394,12 +409,12 @@ body {
     height: 45px; }
     .player_input input:focus {
       outline: none; }
-    .player_input input[disabled] {
+    .player_input input[readonly] {
       color: #4F87C8;
       background-color: #333;
       border: 2px solid #333;
-      padding-left: 5px;
-      width: 315px; }
+      padding: 1px 4px;
+      width: 314px; }
   .player_input .remove {
     display: none;
     color: #8A241B;

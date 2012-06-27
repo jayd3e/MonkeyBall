@@ -1,5 +1,57 @@
 <%inherit file="layouts/base.mako" />
 
+<%def name="double(game)">
+    <div class="game doubles">
+        <div class="left_players">
+            <div class="player">
+                <img src="/static/img/avatar.png"/>
+                <a href="/">jayd3e</a>
+            </div>
+            <div class="divider">-- and --</div>
+            <div class="player">
+                <img src="/static/img/avatar.png"/>
+                <a href="/">jayd3e</a>
+            </div>
+        </div>
+        <div class="middle">
+            <div class="time">@3:00pm</div>
+            <div class="versus">vs</div>
+        </div>
+        <div class="right_players">
+            <div class="player">
+                <img src="/static/img/avatar.png"/>
+                <a href="/">jayd3e</a>
+            </div>
+            <div class="divider">-- and --</div>
+            <div class="player">
+                <img src="/static/img/avatar.png"/>
+                <a href="/">jayd3e</a>
+            </div>
+        </div>
+    </div>
+</%def>
+
+<%def name="single(game)">
+    <div class="game singles">
+        <div class="left_players">
+            <div class="player">
+                <img src="/static/img/avatar.png"/>
+                <a href="/">jayd3e</a>
+            </div>
+        </div>
+        <div class="middle">
+            <div class="time">@3:00pm</div>
+            <div class="versus">vs</div>
+        </div>
+        <div class="right_players">
+            <div class="player">
+                <img src="/static/img/avatar.png"/>
+                <a href="/">jayd3e</a>
+            </div>
+        </div>
+    </div>
+</%def>
+
 <%def name="body()">
     <div class="dashboard">
         <article class="left">
@@ -34,110 +86,24 @@
         </article>
         <aside class="right">
             <div class="upcoming_games">
-            <h2>Upcoming Games</h2>
-            % for i in range(2):
-                <div class="game doubles">
-                    <div class="left_players">
-                        <div class="player">
-                            <img src="/static/img/avatar.png"/>
-                            <a href="/">jayd3e</a>
-                        </div>
-                        <div class="divider">-- and --</div>
-                        <div class="player">
-                            <img src="/static/img/avatar.png"/>
-                            <a href="/">jayd3e</a>
-                        </div>
-                    </div>
-                    <div class="middle">
-                        <div class="time">@3:00pm</div>
-                        <div class="versus">vs</div>
-                    </div>
-                    <div class="right_players">
-                        <div class="player">
-                            <img src="/static/img/avatar.png"/>
-                            <a href="/">jayd3e</a>
-                        </div>
-                        <div class="divider">-- and --</div>
-                        <div class="player">
-                            <img src="/static/img/avatar.png"/>
-                            <a href="/">jayd3e</a>
-                        </div>
-                    </div>
-                </div>
-            % endfor
-            % for i in range(1):
-                <div class="game singles">
-                    <div class="left_players">
-                        <div class="player">
-                            <img src="/static/img/avatar.png"/>
-                            <a href="/">jayd3e</a>
-                        </div>
-                    </div>
-                    <div class="middle">
-                        <div class="time">@3:00pm</div>
-                        <div class="versus">vs</div>
-                    </div>
-                    <div class="right_players">
-                        <div class="player">
-                            <img src="/static/img/avatar.png"/>
-                            <a href="/">jayd3e</a>
-                        </div>
-                    </div>
-                </div>
-            % endfor
+                <h2>Upcoming Games</h2>
+                % for upcoming_game in upcoming_games:
+                    % if upcoming_game.game_type == 0:
+                        ${ single(upcoming_game) }
+                    % else:
+                        ${ double(upcoming_game) }
+                    % endif
+                % endfor
             </div>
             <div class="previous_games">
-            <h2>Previous Games</h2>
-            % for i in range(2):
-                <div class="game doubles">
-                    <div class="left_players">
-                        <div class="player">
-                            <img src="/static/img/avatar.png"/>
-                            <a href="/">jayd3e</a>
-                        </div>
-                        <div class="divider">-- and --</div>
-                        <div class="player">
-                            <img src="/static/img/avatar.png"/>
-                            <a href="/">jayd3e</a>
-                        </div>
-                    </div>
-                    <div class="middle">
-                        <div class="time">@3:00pm</div>
-                        <div class="versus">vs</div>
-                    </div>
-                    <div class="right_players">
-                        <div class="player">
-                            <img src="/static/img/avatar.png"/>
-                            <a href="/">jayd3e</a>
-                        </div>
-                        <div class="divider">-- and --</div>
-                        <div class="player">
-                            <img src="/static/img/avatar.png"/>
-                            <a href="/">jayd3e</a>
-                        </div>
-                    </div>
-                </div>
-            % endfor
-            % for i in range(1):
-                <div class="game singles">
-                    <div class="left_players">
-                        <div class="player">
-                            <img src="/static/img/avatar.png"/>
-                            <a href="/">jayd3e</a>
-                        </div>
-                    </div>
-                    <div class="middle">
-                        <div class="time">@3:00pm</div>
-                        <div class="versus">vs</div>
-                    </div>
-                    <div class="right_players">
-                        <div class="player">
-                            <img src="/static/img/avatar.png"/>
-                            <a href="/">jayd3e</a>
-                        </div>
-                    </div>
-                </div>
-            % endfor
+                <h2>Previous Games</h2>
+                % for previous_game in previous_games:
+                    % if previous_game.game_type == 0:
+                        ${ single(previous_game) }
+                    % else:
+                        ${ double(previous_game) }
+                    % endif
+                % endfor
             </div>
         </aside>
     </div>

@@ -154,15 +154,13 @@
     .actions {
         text-align: left;
         padding: 15px 0px 0px 0px;
+    }
+}
 
-        input {
-            border: none;
-            outline: none;
+.lobby.singles {
 
-            &:hover {
-                cursor: pointer;
-            }
-        }
+    > .left_players, > .right_players {
+        padding-top: 43px;
     }
 }
 
@@ -179,6 +177,15 @@
             padding: 15px 0px;
         }
 
+        .left_score_display, .right_score_display {
+            @include base();
+
+            float: left;
+            font-size: 50px;
+            margin-top: 41px;
+            color: #FFF;
+        }
+
         .left_score, .right_score {
             float: left;
             font-size: 50px;
@@ -187,10 +194,14 @@
             input {
                 font-size: 45px;
                 width: 60px;
+
+                &:hover {
+                    outline: none;
+                }
             }
         }
 
-        .left_score {
+        .left_score, .left_score_display {
             margin-right: 30px;
         }
 
@@ -212,12 +223,12 @@
             width: auto;
         }
 
-        .right_score {
+        .right_score, .right_score_display {
             margin-left: 30px;
         }
     }
 
-    .finalize {
+    input[name='finalize'] {
         margin-bottom: 15px;
     }
 
