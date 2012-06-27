@@ -144,6 +144,25 @@ body {
   position: relative; }
   .dashboard .left {
     padding: 5px 475px 5px 5px; }
+    .dashboard .left .profile {
+      background-color: #222;
+      border-radius: 3px;
+      padding: 10px 10px 20px 10px;
+      overflow: auto;
+      padding-bottom: 10px;
+      margin-bottom: 15px; }
+      .dashboard .left .profile h2 {
+        float: left;
+        margin-right: 25px;
+        font-size: 35px; }
+        .dashboard .left .profile h2 .wins {
+          color: #a9bd38; }
+        .dashboard .left .profile h2 .losses {
+          color: #8A241B; }
+        .dashboard .left .profile h2 .ratio {
+          color: #4F87C8; }
+        .dashboard .left .profile h2 .num {
+          color: #FFF; }
     .dashboard .left .leaderboard {
       background-color: #222;
       border-radius: 3px;

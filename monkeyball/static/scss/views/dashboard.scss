@@ -4,6 +4,35 @@
     .left {
         padding: 5px 475px 5px 5px;
 
+        .profile {
+            @include panel();
+            overflow: auto;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+
+            h2 {
+                float: left;
+                margin-right: 25px;
+                font-size: 35px;
+
+                .wins {
+                    color: #A9BD38
+                }
+
+                .losses {
+                    color: #8A241B;
+                }
+
+                .ratio {
+                    color: #4F87C8;
+                }
+
+                .num {
+                    color: #FFF;
+                }
+            }
+        }
+
         .leaderboard {
             @include panel();
 

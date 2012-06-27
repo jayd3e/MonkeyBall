@@ -4,46 +4,28 @@
     <div class="dashboard">
         <article class="left">
             <div class="profile">
-
+                <h2><span class="wins">Wins:</span> <span class="num">23</span></h2>
+                <h2><span class="losses">Losses:</span> <span class="num">24</span></h2>
+                <h2><span class="ratio">Ratio:</span> <span class="num">1.5</span></h2>
             </div>
             <div class="leaderboard">
                 <h2>Leaders</h2>
                 <table class="leaders">
                     <thead>
-                        <th class="num">
-                           #
-                        </th>
-                        <th>
-                            player
-                        </th>
-                        <th>
-                            wins
-                        </th>
-                        <th>
-                            losses
-                        </th>
-                        <th>
-                            ratio
-                        </th>
+                        <th class="num">#</th>
+                        <th>player</th>
+                        <th>wins</th>
+                        <th>losses</th>
+                        <th>ratio</th>
                     </thead>
                     <tbody>
                     % for i in range(20):
                         <tr class="leader">
-                            <td>
-                                ${i+1}
-                            </td>
-                            <td>
-                                jayd3e
-                            </td>
-                            <td>
-                                5
-                            </td>
-                            <td>
-                                8
-                            </td>
-                            <td>
-                                1.5
-                            </td>
+                            <td>${i+1}</td>
+                            <td>jayd3e</td>
+                            <td>5</td>
+                            <td>8</td>
+                            <td>1.5</td>
                         </tr>
                     % endfor
                     </tbody>
