@@ -1,11 +1,27 @@
 from datetime import datetime
 from pyramid.view import view_config
-from monkeyball.models.game import Game
 from sqlalchemy.sql.expression import desc
+from retools.cache import CacheRegion
+from retools.cache import cache_region
+from monkeyball.models.game import Game
+from monkeyball.models.player import Player
 
 
-def get_leaderboard():
-    pass
+CacheRegion.add_region("short_term", expires=300)
+
+
+@cache_region('short_term')
+def get_leaderboard(request):
+    db = request.db
+
+    players = []
+    results = db.query(Player).all()
+    for player in results:
+        player.wins, player.losses, player.ratio = player.wins_losses()
+        players.append(player)
+
+    players.sort(key=lambda x: x.wins, reverse=True)
+    return players
 
 
 @view_config(route_name='index',
@@ -14,29 +30,7 @@ def dashboard(request):
     player = request.player
     db = request.db
 
-    wins = 0
-    losses = 0
-    ratio = 0
-
-    # Wins/Losses
-    for game in player.games:
-        # Boolean representing a left win
-        left = None
-
-        if game.left_score > game.right_score:
-            left = True
-        else:
-            left = False
-
-        if (left is True and game.side_of_player(player.id) == 0) or \
-           (left is False and game.side_of_player(player.id) == 1):
-            wins += 1
-        else:
-            losses += 1
-
-    # Ratio
-    if losses != 0:
-        ratio = round(wins / float(losses), 2)
+    wins, losses, ratio = player.wins_losses()
 
     # Upcoming games
     upcoming_games = []
@@ -54,7 +48,7 @@ def dashboard(request):
         game.lefts, game.rights = game.separate_players()
         previous_games.append(game)
 
-    leaders = get_leaderboard()
+    leaders = get_leaderboard(request)
 
     return {
         'wins': wins,

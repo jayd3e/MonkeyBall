@@ -62,14 +62,16 @@
                         <th>ratio</th>
                     </thead>
                     <tbody>
-                    % for i in range(20):
+                    <% i = 0 %>
+                    % for leader in leaders:
                         <tr class="leader">
                             <td>${i+1}</td>
-                            <td>jayd3e</td>
-                            <td>5</td>
-                            <td>8</td>
-                            <td>1.5</td>
+                            <td>${ leader.name }</td>
+                            <td>${ leader.wins }</td>
+                            <td>${ leader.losses }</td>
+                            <td>${ leader.ratio }</td>
                         </tr>
+                        <% i += 1 %>
                     % endfor
                     </tbody>
                 </table>
