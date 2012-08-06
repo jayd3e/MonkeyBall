@@ -59,10 +59,12 @@ def main(global_config, **settings):
     config.add_route('game_join', '/game/join/{id}')
     config.add_route('game', '/game/{id}')
     config.add_route('login', '/login')
+    config.add_route('logout', '/logout')
 
     # Api
     config.add_route('api_players', '/api/players')
     config.add_route('api_queueme', '/api/queueme')
+    config.add_route('api_messages', '/api/messages')
 
     config.scan('monkeyball')
     return config.make_wsgi_app()

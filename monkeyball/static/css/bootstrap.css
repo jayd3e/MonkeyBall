@@ -154,10 +154,11 @@ body {
   position: relative; }
   .header .logo {
     float: left;
-    padding: 5px 5px 5px 0px;
+    padding: 7px 5px 5px 0px;
     font-size: 20px;
     color: #a9bd38;
-    text-shadow: 1px 1px black; }
+    text-shadow: 1px 1px black;
+    vertical-align: text-bottom; }
   .header .notifications {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 14px;
@@ -188,7 +189,7 @@ body {
       margin-left: 10px; }
       .header .account li a {
         color: #FFF;
-        vertical-align: middle; }
+        vertical-align: text-bottom; }
 
 .queueme {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;

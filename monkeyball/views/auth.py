@@ -1,7 +1,10 @@
 from velruse import login_url
 from pyramid.view import view_config
 from pyramid.httpexceptions import HTTPFound
-from pyramid.security import remember
+from pyramid.security import (
+    remember,
+    forget
+)
 from monkeyball.models.player import Player
 
 
@@ -44,3 +47,10 @@ def login_denied_view(request):
     return {
         'result': 'denied',
     }
+
+
+@view_config(route_name='logout',
+             permission='__no_permission_required__')
+def logout(request):
+    forget(request)
+    return HTTPFound(location='/')

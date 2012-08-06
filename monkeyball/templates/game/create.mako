@@ -19,8 +19,8 @@
 </%def>
 
 <%def name="time()">
-    <input name="hour" maxlength="2" type="text" value="${ hour }" />
-    <input name="min" maxlength="2" type="text" value="${ min }" />
+    <input name="hour" maxlength="2" type="text" value="${ hour }" autocomplete="off" />
+    <input name="min" maxlength="2" type="text" value="${ min }" autocomplete="off" />
     <select name="m">
         <option value="AM"
         % if m == "AM":

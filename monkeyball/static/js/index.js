@@ -33,7 +33,8 @@ $(function() {
 
         routes: {
             "game/create": "create",
-            "queue": "queue"
+            "queue": "queue",
+            "game/:id": "lobby"
         },
 
         initialize: function() {
@@ -52,6 +53,11 @@ $(function() {
             var queue = new Queue.Views.QueueMe();
 
             $(".main").prepend(queue.render().el);
+        },
+
+        lobby: function(id) {
+            var Game = monkeyball.module("game");
+            var lobby = new Game.Views.Lobby({'game_id': id});
         }
 
     });

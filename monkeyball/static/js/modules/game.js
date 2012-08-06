@@ -2,6 +2,7 @@
 
     // Deps
     var Player = monkeyball.module("player");
+    var Message = monkeyball.module("message");
 
     var term = "";
 
@@ -12,7 +13,15 @@
         }
     });
 
-    var available_players = new AvailablePlayers();
+    Messages = Backbone.Collection.extend({
+        model: Message.Model,
+        initialize: function(settings) {
+            this.game_id = settings.game_id;
+        },
+        url: function() {
+            return "/api/messages?game_id=" + this.game_id;
+        }
+    });
 
     Game.Views.Creator = Backbone.View.extend({
         game_type: 1,
@@ -27,6 +36,7 @@
         },
         initialize: function() {
             _.bindAll(this, 'search', 'select');
+            this.available_players = new AvailablePlayers();
 
             this.$(".player_input input[type='text']").autocomplete({
                 source: this.search,
@@ -65,7 +75,7 @@
         },
         search: function(request, auto_comp_response) {
             term = request.term;
-            available_players.fetch({
+            this.available_players.fetch({
                 success: function(collection, response) {
                     auto_comp_response(collection.map(function( player ) {
                         return {
@@ -142,6 +152,68 @@
             }
 
             return true;
+        }
+    });
+
+    Game.Views.Lobby =  Backbone.View.extend({
+        el: $('.game_lobby'),
+
+        events: {
+            'keypress .chat .message_input input': 'keypress'
+        },
+        initialize: function(settings) {
+            this.game_id = settings.game_id;
+            _.bindAll(this, 'submit', 'reset', 'add_all', 'add_one', 'scroll');
+
+            this.messages = new Messages({game_id: this.game_id});
+            this.messages.fetch();
+            this.messages.on('add', this.reset);
+
+            this.chat_el = this.$('.chat');
+            this.messages_el = this.chat_el.children('.messages');
+            this.message_input = this.chat_el.children('.message_input');
+            this.input = this.message_input.children('input');
+
+            this.scroll();
+            window.setInterval(this.reset, 2000);
+        },
+        scroll: function() {
+            this.messages_el.scrollTop(this.messages_el.prop("scrollHeight"));
+        },
+        keypress: function(e) {
+            if (e.which == 13) {
+                this.submit();
+                return false;
+            }
+        },
+        submit: function() {
+            var val = this.input.val();
+            this.messages.create({'game_id': this.game_id,
+                                  'body': val},
+                                 {'wait': true});
+            this.input.val('');
+        },
+        reset: function() {
+            this.messages.fetch({'success': this.add_all});
+        },
+        add_all: function() {
+            var scroll = false;
+            if (this.messages_el.outerHeight() == (this.messages_el.scrollHeight - this.messages_el.scrollTop())) {
+                scroll = true;
+            }
+
+            this.messages_el.empty();
+            this.messages.each(function(message) {
+                this.add_one(message);
+            }, this);
+
+            if (scroll) { this.scroll(); }
+        },
+        add_one: function(message) {
+            message_el = this.make("div", {"class": "message"}, '<span class="username">' +
+                                                                message.get('player_name') + '</span>' +
+                                                                message.get('body'));
+            this.messages_el.append(message_el);
         }
     });
 

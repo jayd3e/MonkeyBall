@@ -61,14 +61,14 @@
             % endif
             <div class="chat">
                 <div class="messages">
-                    % for i in range(100):
+                    % for message in game.messages:
                     <div class="message">
-                        <span class="username">jayd3e</span>Some text here!!
+                        <span class="username">${ message.player.name }</span>${ message.body }
                     </div>
                     % endfor
                 </div>
                 <div class="message_input">
-                    <input type="text" name="body" />
+                    <input type="text" name="body" autocomplete="off" />
                 </div>
             </div>
         </div>
