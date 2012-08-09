@@ -64,6 +64,7 @@ def main(global_config, **settings):
     # Api
     config.add_route('api_players', '/api/players')
     config.add_route('api_queueme', '/api/queueme')
+    config.add_route('api_queueme_activate', '/api/queueme/activate')
     config.add_route('api_messages', '/api/messages')
 
     config.scan('monkeyball')

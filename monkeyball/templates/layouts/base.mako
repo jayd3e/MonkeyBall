@@ -21,7 +21,9 @@
             </div>
         </div>
     </body>
-
+    <script type="text/javascript" charset="utf-8">
+        var PLAYER_ID = ${ request.player.id }
+    </script>
     <!-- Third-Party Libraries -->
     <script type="text/javascript" charset="utf-8" src="${request.static_url('monkeyball:static/js/libs/jquery-1.7.2.min.js')}"></script>
     <script type="text/javascript" charset="utf-8" src="${request.static_url('monkeyball:static/js/libs/jquery-ui-1.8.21.custom.min.js')}"></script>

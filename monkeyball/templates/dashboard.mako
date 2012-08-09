@@ -53,7 +53,7 @@
     <script id="monkeyball_queueme_template" type="handlebars-template">
         <div class="container">
             <div class="queueme">
-                Queueing...
+                {{ msg }}
             </div>
         </div>
     </script>

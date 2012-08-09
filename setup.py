@@ -19,7 +19,9 @@ requires = [
     'alembic',
     'waitress',
     'velruse',
-    'retools'
+    'retools',
+    'APScheduler',
+    'redis'
 ]
 
 tests_require = requires + [

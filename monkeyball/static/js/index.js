@@ -50,7 +50,7 @@ $(function() {
 
         queue: function() {
             var Queue = monkeyball.module("queue");
-            var queue = new Queue.Views.QueueMe();
+            var queue = new Queue.Views.QueueMe({'player_id': PLAYER_ID});
 
             $(".main").prepend(queue.render().el);
         },
