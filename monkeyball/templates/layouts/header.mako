@@ -5,11 +5,13 @@
     <ul class="main_nav horiz-list">
         <li>
             <a class="regular" id="notifications_button" href="#">${ len(notifications) }</a>
+            % if len(notifications) > 0:
             <div class="notifications">
                 % for notification in notifications:
                     ${ notification_.notification(notification) }
                 % endfor
             </div>
+            % endif
         </li>
         <li>
             <a class="primary" href="/game/create">Start</a>
