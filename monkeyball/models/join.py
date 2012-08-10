@@ -14,7 +14,7 @@ class Join(Base):
     game_id = Column(Integer, ForeignKey('games.id'))
     player_id = Column(BigInteger, ForeignKey('players.id'))
     # 0 = left, 1 = right
-    side = Column(Integer)
+    spot = Column(Integer)
 
     game = relationship('Game', backref='joins')
     player = relationship('Player', backref='joins')
