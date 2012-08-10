@@ -39,7 +39,6 @@ def dashboard(request):
     results = db.query(Game).filter(Game.time > datetime.now()).order_by(desc(Game.time)).limit(4)
     for game in results:
         game.hour, game.min, game.m = game.get_printed_time()
-        game.lefts, game.rights = game.separate_players()
         upcoming_games.append(game)
 
     # Previous Games
@@ -47,7 +46,6 @@ def dashboard(request):
     results = db.query(Game).filter(Game.time < datetime.now()).order_by(desc(Game.time)).limit(4)
     for game in results:
         game.hour, game.min, game.m = game.get_printed_time()
-        game.lefts, game.rights = game.separate_players()
         previous_games.append(game)
 
     leaders = get_leaderboard(request)

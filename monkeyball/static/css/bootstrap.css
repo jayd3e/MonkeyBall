@@ -499,6 +499,9 @@ body {
   text-align: center;
   width: 315px; }
 
+.unaccepted {
+  opacity: 0.6; }
+
 .ui-autocomplete {
   background-color: #FFF;
   width: 320px; }

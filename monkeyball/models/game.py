@@ -21,10 +21,10 @@ class Game(Base):
 
     players = association_proxy('joins', 'player')
 
-    def side_of_player(self, player_id):
+    def spot_of_player(self, player_id):
         for join in self.joins:
             if join.player.id is player_id:
-                return join.side
+                return join.spot
 
     def get_printed_time(self):
         m = "AM"
@@ -35,39 +35,19 @@ class Game(Base):
 
         return hour, self.time.minute, m
 
-    def separate_players(self):
-        lefts = []
-        rights = []
+    @property
+    def ordered_players(self):
+        players = [None, None, None, None]
         for join in self.joins:
-            if join.side == 0:
-                lefts.append({
-                    'id': join.player.id,
-                    'name': join.player.name,
-                    'pending': 0
-                })
-            else:
-                rights.append({
-                    'id': join.player.id,
-                    'name': join.player.name,
-                    'pending': 0
-                })
+            join.player.accepted = True
+            players[join.spot] = join.player
 
-        notification_item = self.game_invite_notification
-        for notification in notification_item.notifications:
-            if notification.side == 0:
-                lefts.append({
-                    'id': notification.player.id,
-                    'name': notification.player.name,
-                    'pending': 1
-                })
-            else:
-                rights.append({
-                    'id': notification.player.id,
-                    'name': notification.player.name,
-                    'pending': 1
-                })
-
-        return lefts, rights
+        for player in players:
+            if player is None:
+                for notification in self.game_invite_notification.notifications:
+                    notification.player.accepted = False
+                    players[notification.spot] = notification.player
+        return players
 
     def __repr__(self):
         return "<Game('%s')>" % (self.id)

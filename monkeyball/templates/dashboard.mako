@@ -1,22 +1,22 @@
 <%inherit file="layouts/base.mako" />
 
-<%def name="player(id, name)">
+<%def name="player(player)">
     <div class="player">
-        % if name == "monkey":
+        % if player.name == "monkey":
             <img src="/static/img/thumbnail_normal.jpeg"/>
         % else:
-            <img src="http://graph.facebook.com/${ id }/picture"/>
+            <img src="http://graph.facebook.com/${ player.id }/picture"/>
         % endif
-        <a href="/">${ name }</a>
+        <a href="/">${ player.name }</a>
     </div>
 </%def>
 
 <%def name="double(game)">
     <div class="game doubles">
         <div class="left_players">
-            ${ player(game.lefts[0]['id'], game.lefts[0]['name'])}
+            ${ player(game.ordered_players[0]) }
             <div class="divider">-- and --</div>
-            ${ player(game.lefts[1]['id'], game.lefts[1]['name'])}
+            ${ player(game.ordered_players[2]) }
         </div>
         <div class="middle">
             <div class="time">
@@ -25,9 +25,9 @@
             <div class="versus">vs</div>
         </div>
         <div class="right_players">
-            ${ player(game.rights[0]['id'], game.rights[0]['name'])}
+            ${ player(game.ordered_players[1]) }
             <div class="divider">-- and --</div>
-            ${ player(game.rights[1]['id'], game.rights[1]['name'])}
+            ${ player(game.ordered_players[3]) }
         </div>
     </div>
 </%def>
@@ -35,7 +35,7 @@
 <%def name="single(game)">
     <div class="game singles">
         <div class="left_players">
-            ${ player(game.lefts[0]['id'], game.lefts[0]['name'])}
+            ${ player(game.ordered_players[0]) }
         </div>
         <div class="middle">
             <div class="time">
@@ -44,7 +44,7 @@
             <div class="versus">vs</div>
         </div>
         <div class="right_players">
-            ${ player(game.rights[0]['id'], game.rights[0]['name'])}
+            ${ player(game.ordered_players[1]) }
         </div>
     </div>
 </%def>
@@ -54,6 +54,10 @@
         <div class="container">
             <div class="queueme">
                 {{ msg }}
+
+                {{#if game_id}}
+                    <a class="activate_link" href="#">Join</a>
+                {{/if}}
             </div>
         </div>
     </script>

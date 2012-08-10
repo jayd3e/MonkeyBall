@@ -1,19 +1,19 @@
 <%inherit file="../layouts/base.mako" />
 
-<%def name="own_player_input(side)">
+<%def name="own_player_input()">
     <div class="player_input readonly">
         <img src="http://graph.facebook.com/${ request.player.id }/picture"/>
-        <input name="left_id" type="hidden" value="${ request.player.id }" />
-        <input name="left_user" type="text" value="${ request.player.name }" readonly />
+        <input name="top_left_id" type="hidden" value="${ request.player.id }" />
+        <input name="top_left_user" type="text" value="${ request.player.name }" readonly />
         <a class="remove">X</a>
     </div>
 </%def>
 
-<%def name="player_input(side)">
+<%def name="player_input(spot)">
     <div class="player_input">
         <img src="/static/img/thumbnail_normal.jpeg"/>
-        <input name="${ side }_id" type="hidden" value="0" />
-        <input name="${ side }_user" type="text" value="monkey" />
+        <input name="${ spot }_id" type="hidden" value="0" />
+        <input name="${ spot }_user" type="text" value="monkey" />
         <a class="remove">X</a>
     </div>
 </%def>
@@ -53,9 +53,9 @@
                 <div class="creator">
                     <div class="doubles">
                         <div class="left_players">
-                            ${ own_player_input("left") }
+                            ${ own_player_input() }
                             <div class="divider">-- and --</div>
-                            ${ player_input("left") }
+                            ${ player_input("bottom_left") }
                         </div>
                         <div class="middle">
                             <div class="time">
@@ -64,14 +64,14 @@
                             <div class="versus">vs</div>
                         </div>
                         <div class="right_players">
-                            ${ player_input("right") }
+                            ${ player_input("top_right") }
                             <div class="divider">-- and --</div>
-                            ${ player_input("right") }
+                            ${ player_input("bottom_right") }
                         </div>
                     </div>
                     <div class="singles">
                         <div class="left_players">
-                            ${ own_player_input("left") }
+                            ${ own_player_input() }
                         </div>
                         <div class="middle">
                             <div class="time">
@@ -80,7 +80,7 @@
                             <div class="versus">vs</div>
                         </div>
                         <div class="right_players">
-                            ${ player_input("right") }
+                            ${ player_input("top_right") }
                         </div>
                     </div>
                 </div>

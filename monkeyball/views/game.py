@@ -20,7 +20,7 @@ def lobby(request):
         game.right_score = request.POST.get('right_score')
         game.time = datetime.now()
 
-    lefts, rights = game.separate_players()
+    players = game.ordered_players
 
     # Times
     hour, min, m = game.get_printed_time()
@@ -30,8 +30,7 @@ def lobby(request):
         "game": game,
         "hour": hour,
         "m": m,
-        "lefts": lefts,
-        "rights": rights
+        "players": players
     }
 
 
@@ -41,8 +40,10 @@ def create(request):
     db = request.db
 
     if request.POST.get('submit'):
-        lefts = request.POST.getall('left_id')
-        rights = request.POST.getall('right_id')
+        top_left = request.POST.get('top_left_id')
+        top_right = request.POST.get('top_right_id')
+        bottom_left = request.POST.get('bottom_left_id')
+        bottom_right = request.POST.get('bottom_right_id')
 
         time = datetime.today()
 
@@ -66,20 +67,13 @@ def create(request):
                                                            created=datetime.now())
         db.add(group_invite_notification)
 
-        for left in lefts:
+        player_ids = [top_left, top_right, bottom_left, bottom_right]
+        for i in range(4):
             send_notification(request,
                               group_invite_notification,
-                              left,
+                              player_ids[i],
                               game,
-                              0)
-
-        for right in rights:
-            send_notification(request,
-                              group_invite_notification,
-                              right,
-                              game,
-                              1)
-
+                              i)
         db.flush()
         return HTTPFound('/game/%s' % game.id)
     elif request.POST.get('cancel'):
@@ -100,16 +94,24 @@ def create(request):
     }
 
 
-def send_notification(request, notification_item, player_id, game, side):
+def send_notification(request, notification_item, player_id, game, spot):
+    # player_id is equal to current player's id
     if int(player_id) == request.player.id:
         join = Join(player_id=int(player_id),
                     game=game,
-                    side=side)
+                    spot=spot)
         request.db.add(join)
-    notification = Notification(player_id=int(player_id),
-                                notification_item=notification_item,
-                                side=side)
-    request.db.add(notification)
+    # player_id is equal to the ringer id
+    elif int(player_id) == 0:
+        join = Join(player_id=int(player_id),
+                    game=game,
+                    spot=spot)
+        request.db.add(join)
+    else:
+        notification = Notification(player_id=int(player_id),
+                                    notification_item=notification_item,
+                                    spot=spot)
+        request.db.add(notification)
 
 
 @view_config(route_name='game_join')
@@ -123,7 +125,7 @@ def join(request):
 
     join = Join(player_id=int(notification.player.id),
                 game_id=game_invite_notification.game.id,
-                side=notification.side)
+                spot=notification.spot)
     db.add(join)
 
     db.delete(notification)

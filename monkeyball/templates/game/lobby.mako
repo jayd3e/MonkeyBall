@@ -1,13 +1,17 @@
 <%inherit file="../layouts/base.mako" />
 
-<%def name="player_large(id, name)">
-    <div class="player_large">
-        % if name == 'monkey':
+<%def name="player_large(player)">
+    <div class="player_large
+        % if not player.accepted:
+            unaccepted
+        % endif
+        ">
+        % if player.name == 'monkey':
             <img src="/static/img/thumbnail_normal.jpeg"/>
         % else:
-            <img src="http://graph.facebook.com/${ id }/picture"/>
+            <img src="http://graph.facebook.com/${ player.id }/picture"/>
         % endif
-        ${ name }
+        ${ player.name }
     </div>
 </%def>
 
@@ -25,10 +29,10 @@
                     </div>
                 % endif
                 <div class="left_players">
-                    ${ player_large(lefts[0]['id'], lefts[0]['name']) }
+                    ${ player_large(players[0]) }
                     % if game.game_type == 1:
                         <div class="divider">-- and --</div>
-                        ${ player_large(lefts[1]['id'], lefts[1]['name']) }
+                        ${ player_large(players[2]) }
                     % endif
                 </div>
                 <div class="middle">
@@ -38,10 +42,10 @@
                     <div class="versus">vs</div>
                 </div>
                 <div class="right_players">
-                    ${ player_large(rights[0]['id'], rights[0]['name']) }
+                    ${ player_large(players[1]) }
                     % if game.game_type == 1:
                         <div class="divider">-- and --</div>
-                        ${ player_large(rights[1]['id'], rights[1]['name']) }
+                        ${ player_large(players[3]) }
                     % endif
                 </div>
                 % if game.completed != True:

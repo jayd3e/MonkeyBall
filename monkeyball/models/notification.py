@@ -17,7 +17,7 @@ class Notification(Base):
 
     player_id = Column(BigInteger, ForeignKey('players.id'))
     notification_item_id = Column(Integer, ForeignKey('notification_items.id'))
-    side = Column(Integer)
+    spot = Column(Integer)
 
     player = relationship('Player', backref='notification')
     notification_item = relationship('NotificationItem', backref="notifications")
