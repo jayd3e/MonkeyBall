@@ -40,6 +40,11 @@
                         <a href="/game/${ game.id }">@${ hour }:${ "%02d" % game.time.minute }${ m }</a>
                     </div>
                     <div class="versus">vs</div>
+                    % if game.completed != True:
+                        <div class="finalize">
+                            <input class="primary big" name="finalize" value="Finalize" type="submit" />
+                        </div>
+                    % endif
                 </div>
                 <div class="right_players">
                     ${ player_large(players[1]) }
@@ -58,11 +63,6 @@
                     </div>
                 % endif
             </div>
-            % if game.completed != True:
-                <div class="finalize">
-                    <input class="primary big" name="finalize" value="Finalize" type="submit" />
-                </div>
-            % endif
             <div class="chat">
                 <div class="messages">
                     % for message in game.messages:

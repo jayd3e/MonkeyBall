@@ -56,7 +56,7 @@
                 {{ msg }}
 
                 {{#if game_id}}
-                    <a class="activate_link" href="#">Join</a>
+                    <button class="activate_link">Join</button>
                 {{/if}}
             </div>
         </div>

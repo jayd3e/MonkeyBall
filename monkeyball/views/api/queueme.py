@@ -59,14 +59,13 @@ def queueme_activate(request):
         if join.spot == int(game_spot) and join.player.id == 0L:
             join.player_id = player.id
 
-            r.lrem(key, 0, json.dumps({
-                'id': player.id,
-                'name': player.name,
-                'found_game_id': game_id,
-                'found_game_spot': game_spot
-            }, sort_keys=True))
+            r.lrem(key, json.dumps({'id': player.id,
+                                    'name': player.name,
+                                    'found_game_id': int(game_id),
+                                    'found_game_spot': int(game_spot)}, sort_keys=True))
 
             status = 'success'
+            break
 
     db.flush()
     return {
@@ -80,10 +79,9 @@ def start_scheduler(event):
     sched = Scheduler()
     sched.start()
 
-    manage_queue(event.app.registry.settings)
-    # sched.add_interval_job(manage_queue,
-    #                        kwargs={'settings': event.app.registry.settings},
-    #                        seconds=2)
+    sched.add_interval_job(manage_queue,
+                           kwargs={'settings': event.app.registry.settings},
+                           seconds=2)
 
 
 def manage_queue(settings=None):

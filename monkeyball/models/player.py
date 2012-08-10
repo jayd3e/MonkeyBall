@@ -30,10 +30,11 @@ class Player(Base):
             else:
                 left = False
 
-            if (left is True and game.spot_of_player(self.id) in [0, 2]) or \
-               (left is False and game.spot_of_player(self.id) in [1, 3]):
+            if ((left is True and game.spot_of_player(self.id) in [0, 2]) or \
+               (left is False and game.spot_of_player(self.id) in [1, 3])) and \
+                game.completed == True:
                 wins += 1
-            else:
+            elif game.completed == True:
                 losses += 1
 
         if losses != 0:

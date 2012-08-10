@@ -416,7 +416,7 @@ body {
     .game_lobby .lobby .right_score, .game_lobby .lobby .right_score_display {
       margin-left: 30px; }
   .game_lobby input[name='finalize'] {
-    margin-bottom: 15px; }
+    margin: 15px auto; }
   .game_lobby .chat {
     background-color: #111;
     border-radius: 3px; }
@@ -496,8 +496,7 @@ body {
   color: #999;
   font-size: 40px;
   color: #4F87C8;
-  text-align: center;
-  width: 315px; }
+  text-align: center; }
 
 .unaccepted {
   opacity: 0.6; }
