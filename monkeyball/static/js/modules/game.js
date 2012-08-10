@@ -66,7 +66,13 @@
             $(input).attr("readonly", true);
             $(input).parent().addClass("readonly");
 
-            var src = "http://graph.facebook.com/" + ui.item.value + "/picture";
+            var src = '';
+            if (ui.item.value !== 0) {
+                src = "http://graph.facebook.com/" + ui.item.value + "/picture";
+            } else {
+                src = "/static/img/thumbnail_normal.jpeg";
+            }
+
             $(player_input).children("img").prop('src', src);
 
             $(hidden).val(ui.item.value);

@@ -2,7 +2,6 @@ from datetime import datetime
 from pyramid.view import view_config
 from sqlalchemy.sql.expression import desc
 from retools.cache import CacheRegion
-from retools.cache import cache_region
 from monkeyball.models.game import Game
 from monkeyball.models.player import Player
 
@@ -17,8 +16,9 @@ def get_leaderboard(request):
     players = []
     results = db.query(Player).all()
     for player in results:
-        player.wins, player.losses, player.ratio = player.wins_losses()
-        players.append(player)
+        if player.id != 0:
+            player.wins, player.losses, player.ratio = player.wins_losses()
+            players.append(player)
 
     players.sort(key=lambda x: x.wins, reverse=True)
     return players

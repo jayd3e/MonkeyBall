@@ -13,9 +13,10 @@ def search_players(request):
 
     players_json = []
     for player in players:
-        players_json.append({
-            'id': player.id,
-            'name': player.name
-        })
+        if player.id != request.player.id:
+            players_json.append({
+                'id': player.id,
+                'name': player.name
+            })
 
     return players_json
