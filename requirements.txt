@@ -1,0 +1,2 @@
+-e git+https://github.com/jayd3e/velruse.git#egg=velruse
+./
