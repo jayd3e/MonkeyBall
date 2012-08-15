@@ -18,7 +18,7 @@ requires = [
     'psycopg2',
     'alembic',
     'waitress',
-    'velruse',
+    'velruse==0.3b3',
     'retools',
     'APScheduler',
     'redis'
