@@ -9,7 +9,7 @@ def search_players(request):
     db = request.db
 
     s = request.params['s']
-    players = db.query(Player).filter(Player.name.ilike('%' + s + '%'))
+    players = db.query(Player).filter(Player.name.ilike('%' + s + '%')).all()
 
     players_json = []
     for player in players:
